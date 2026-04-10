@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Modal } from "antd";
 import styles from "./ProductCategoriesTable.module.scss";
 import {
   deleteProductCategory,
@@ -146,6 +147,68 @@ function ToggleStatusButton({
   );
 }
 
+function DeleteCategoryButton({ id, name }: { id: number; name: string }) {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [open, setOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    if (submitting) return;
+    setOpen(false);
+  };
+
+  const handleConfirm = async () => {
+    setSubmitting(true);
+    formRef.current?.requestSubmit();
+  };
+
+  return (
+    <>
+      <form
+        ref={formRef}
+        action={deleteProductCategory}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <input type="hidden" name="id" value={id} />
+
+        <button
+          type="button"
+          className={`${styles.iconButton} ${styles.deleteButton}`}
+          title="Xóa"
+          aria-label={`Xóa ${name}`}
+          onClick={handleOpen}
+        >
+          <TrashIcon />
+        </button>
+      </form>
+
+      <Modal
+        open={open}
+        centered
+        destroyOnHidden
+        maskClosable={!submitting}
+        closable={!submitting}
+        onCancel={handleCancel}
+        onOk={handleConfirm}
+        okText="Xóa"
+        cancelText="Hủy"
+        okButtonProps={{ danger: true, loading: submitting }}
+        cancelButtonProps={{ disabled: submitting }}
+        title="Xác nhận xóa danh mục"
+      >
+        <p style={{ margin: 0 }}>
+          Bạn có chắc muốn xóa danh mục <strong>"{name}"</strong> không?
+        </p>
+      </Modal>
+    </>
+  );
+}
+
 export default function ProductCategoriesTable({ items }: Props) {
   const router = useRouter();
   const [keyword, setKeyword] = useState("");
@@ -283,26 +346,7 @@ export default function ProductCategoriesTable({ items }: Props) {
                           <EditIcon />
                         </Link>
 
-                        <form
-                          action={deleteProductCategory}
-                          onClick={(e) => e.stopPropagation()}
-                          onSubmit={(e) => {
-                            const ok = window.confirm(
-                              `Bạn có chắc muốn xóa danh mục "${item.name}" không?`,
-                            );
-                            if (!ok) e.preventDefault();
-                          }}
-                        >
-                          <input type="hidden" name="id" value={item.id} />
-                          <button
-                            type="submit"
-                            className={`${styles.iconButton} ${styles.deleteButton}`}
-                            title="Xóa"
-                            aria-label={`Xóa ${item.name}`}
-                          >
-                            <TrashIcon />
-                          </button>
-                        </form>
+                        <DeleteCategoryButton id={item.id} name={item.name} />
                       </div>
                     </td>
                   </tr>

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styles from "./ProductForm.module.scss";
+import Ckeditor4Field from "@/components/modules/admin/ckeditor/Ckeditor4Field";
+import ProductImageField from "./ProductImageField";
 
 type CategoryOption = {
   id: number;
@@ -30,133 +32,140 @@ export default function ProductForm({
   categories,
   defaultValues,
 }: ProductFormProps) {
+  const isEditMode = Boolean(defaultValues);
+
+  const hiddenIsActive = isEditMode ? (defaultValues?.isActive ?? true) : true;
+
+  const hiddenIsFeatured = isEditMode
+    ? (defaultValues?.isFeatured ?? false)
+    : false;
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>{title}</h1>
-        <p className={styles.description}>Điền thông tin sản phẩm bên dưới.</p>
+      <div className={styles.headerRow}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>{title}</h1>
+          <p className={styles.description}>
+            Điền thông tin sản phẩm bên dưới.
+          </p>
+        </div>
+
+        <div className={styles.headerActions}>
+          <button
+            type="submit"
+            form="product-form"
+            className={styles.submitButton}
+          >
+            {submitLabel}
+          </button>
+
+          <Link href="/admin/products" className={styles.backButton}>
+            Quay lại
+          </Link>
+        </div>
       </div>
 
       <div className={styles.card}>
-        <form action={action} className={styles.form}>
-          <div className={styles.gridTwo}>
-            <div className={styles.field}>
-              <label className={styles.label}>Danh mục</label>
-              <select
-                name="categoryId"
-                defaultValue={defaultValues?.categoryId ?? ""}
-                className={styles.select}
-              >
-                <option value="">Chọn danh mục</option>
-                {categories.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+        <form id="product-form" action={action} className={styles.form}>
+          <input
+            type="hidden"
+            name="isActive"
+            value={hiddenIsActive ? "1" : "0"}
+          />
 
-            <div className={styles.field}>
-              <label className={styles.label}>Giá</label>
-              <input
-                name="price"
-                type="text"
-                defaultValue={defaultValues?.price ?? ""}
-                placeholder="Ví dụ: 1500000"
-                className={styles.input}
-              />
-            </div>
-          </div>
+          <input
+            type="hidden"
+            name="isFeatured"
+            value={hiddenIsFeatured ? "1" : "0"}
+          />
 
-          <div className={styles.field}>
-            <label className={styles.label}>Tiêu đề sản phẩm</label>
-            <input
-              name="title"
-              type="text"
-              required
-              defaultValue={defaultValues?.title ?? ""}
-              placeholder="Nhập tiêu đề sản phẩm..."
-              className={styles.input}
-            />
-          </div>
+          <div className={styles.contentLayout}>
+            <div className={styles.mainColumn}>
+              <div className={styles.gridTwo}>
+                <div className={styles.field}>
+                  <label htmlFor="categoryId" className={styles.label}>
+                    Danh mục
+                  </label>
+                  <select
+                    id="categoryId"
+                    name="categoryId"
+                    defaultValue={defaultValues?.categoryId ?? ""}
+                    className={styles.select}
+                  >
+                    <option value="">Chọn danh mục</option>
+                    {categories.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-          <div className={styles.field}>
-            <label className={styles.label}>Mô tả ngắn</label>
-            <textarea
-              name="summary"
-              rows={4}
-              defaultValue={defaultValues?.summary ?? ""}
-              placeholder="Nhập mô tả ngắn..."
-              className={styles.textarea}
-            />
-          </div>
+                <div className={styles.field}>
+                  <label htmlFor="price" className={styles.label}>
+                    Giá
+                  </label>
+                  <input
+                    id="price"
+                    name="price"
+                    type="text"
+                    defaultValue={defaultValues?.price ?? ""}
+                    placeholder="Ví dụ: 1500000"
+                    className={styles.input}
+                  />
+                </div>
+              </div>
 
-          <div className={styles.field}>
-            <label className={styles.label}>Nội dung</label>
-            <textarea
-              name="content"
-              rows={10}
-              defaultValue={defaultValues?.content ?? ""}
-              placeholder="Nhập nội dung chi tiết..."
-              className={styles.textarea}
-            />
-          </div>
-
-          <div className={styles.field}>
-            <label className={styles.label}>Ảnh sản phẩm</label>
-
-            {defaultValues?.thumbnailPath ? (
-              <div className={styles.previewBox}>
-                <img
-                  src={defaultValues.thumbnailPath}
-                  alt={defaultValues.title ?? "product"}
-                  className={styles.previewImage}
+              <div className={styles.field}>
+                <label htmlFor="title" className={styles.label}>
+                  Tiêu đề sản phẩm
+                </label>
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  required
+                  defaultValue={defaultValues?.title ?? ""}
+                  placeholder="Nhập tiêu đề sản phẩm..."
+                  className={styles.input}
                 />
               </div>
-            ) : null}
 
-            <input
-              name="thumbnail"
-              type="file"
-              accept="image/*"
-              className={styles.fileInput}
-            />
-          </div>
+              <div className={styles.field}>
+                <label htmlFor="summary" className={styles.label}>
+                  Mô tả ngắn
+                </label>
+                <textarea
+                  id="summary"
+                  name="summary"
+                  rows={4}
+                  defaultValue={defaultValues?.summary ?? ""}
+                  placeholder="Nhập mô tả ngắn..."
+                  className={styles.textarea}
+                />
+              </div>
 
-          <div className={styles.statusGrid}>
-            <label className={styles.checkboxCard}>
-              <input
-                type="checkbox"
-                name="isFeatured"
-                defaultChecked={Boolean(defaultValues?.isFeatured)}
+              <div className={styles.field}>
+                <label className={styles.label}>Nội dung</label>
+
+                <div className={styles.editorWrap}>
+                  <Ckeditor4Field
+                    name="content"
+                    defaultValue={defaultValues?.content ?? ""}
+                    className={styles.editorTextarea}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <aside className={styles.sideColumn}>
+              <ProductImageField
+                name="thumbnail"
+                label="Ảnh sản phẩm"
+                defaultImage={defaultValues?.thumbnailPath ?? ""}
+                alt={defaultValues?.title ?? "product"}
               />
-              <span className={styles.checkboxText}>
-                <strong>Sản phẩm nổi bật</strong>
-                <small>Bật để ưu tiên hiển thị sản phẩm này</small>
-              </span>
-            </label>
-
-            <label className={styles.checkboxCard}>
-              <input
-                type="checkbox"
-                name="isActive"
-                defaultChecked={defaultValues?.isActive ?? true}
-              />
-              <span className={styles.checkboxText}>
-                <strong>Hiển thị sản phẩm</strong>
-                <small>Cho phép sản phẩm xuất hiện ngoài giao diện</small>
-              </span>
-            </label>
-          </div>
-
-          <div className={styles.actions}>
-            <button type="submit" className={styles.submitButton}>
-              {submitLabel}
-            </button>
-
-            <Link href="/admin/products" className={styles.backButton}>
-              Quay lại
-            </Link>
+            </aside>
           </div>
         </form>
       </div>

@@ -1,4 +1,5 @@
 import { fontInter } from "./fonts";
+import "antd/dist/reset.css";
 
 export default function AdminRootLayout({
   children,

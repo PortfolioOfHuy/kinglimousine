@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Modal } from "antd";
 import styles from "./ProductsTable.module.scss";
 import {
   deleteProduct,
@@ -155,6 +156,67 @@ function ToggleStatusButton({
         {active ? <CheckIcon /> : <MinusIcon />}
       </button>
     </form>
+  );
+}
+
+function DeleteProductButton({ id, title }: { id: number; title: string }) {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [open, setOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    if (submitting) return;
+    setOpen(false);
+  };
+
+  const handleConfirm = async () => {
+    setSubmitting(true);
+    formRef.current?.requestSubmit();
+  };
+
+  return (
+    <>
+      <form
+        ref={formRef}
+        action={deleteProduct}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <input type="hidden" name="id" value={id} />
+
+        <button
+          type="button"
+          className={`${styles.iconButton} ${styles.deleteButton}`}
+          title="Xóa"
+          aria-label={`Xóa ${title}`}
+          onClick={handleOpen}
+        >
+          <TrashIcon />
+        </button>
+      </form>
+
+      <Modal
+        open={open}
+        centered
+        destroyOnHidden
+        closable={!submitting}
+        onCancel={handleCancel}
+        onOk={handleConfirm}
+        okText="Xóa"
+        cancelText="Hủy"
+        okButtonProps={{ danger: true, loading: submitting }}
+        cancelButtonProps={{ disabled: submitting }}
+        title="Xác nhận xóa sản phẩm"
+      >
+        <p style={{ margin: 0 }}>
+          Bạn có chắc muốn xóa sản phẩm <strong>"{title}"</strong> không?
+        </p>
+      </Modal>
+    </>
   );
 }
 
@@ -320,26 +382,7 @@ export default function ProductsTable({ items }: Props) {
                           <EditIcon />
                         </Link>
 
-                        <form
-                          action={deleteProduct}
-                          onClick={(e) => e.stopPropagation()}
-                          onSubmit={(e) => {
-                            const ok = window.confirm(
-                              `Bạn có chắc muốn xóa sản phẩm "${item.title}" không?`,
-                            );
-                            if (!ok) e.preventDefault();
-                          }}
-                        >
-                          <input type="hidden" name="id" value={item.id} />
-                          <button
-                            type="submit"
-                            className={`${styles.iconButton} ${styles.deleteButton}`}
-                            title="Xóa"
-                            aria-label={`Xóa ${item.title}`}
-                          >
-                            <TrashIcon />
-                          </button>
-                        </form>
+                        <DeleteProductButton id={item.id} title={item.title} />
                       </div>
                     </td>
                   </tr>

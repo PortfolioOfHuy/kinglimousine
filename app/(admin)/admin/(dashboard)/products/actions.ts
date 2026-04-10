@@ -69,8 +69,10 @@ export async function createProduct(formData: FormData) {
   const content = String(formData.get("content") ?? "").trim();
   const categoryId = parseOptionalInt(formData.get("categoryId"));
   const price = parsePrice(formData.get("price"));
-  const isFeatured = formData.get("isFeatured") === "on";
-  const isActive = formData.get("isActive") === "on";
+
+  const isFeatured = String(formData.get("isFeatured") ?? "0") === "1";
+  const isActive = String(formData.get("isActive") ?? "1") === "1";
+
   const imageFile = formData.get("thumbnail") as File | null;
 
   if (!title) {
@@ -106,60 +108,63 @@ export async function updateProduct(id: number, formData: FormData) {
   const content = String(formData.get("content") ?? "").trim();
   const categoryId = parseOptionalInt(formData.get("categoryId"));
   const price = parsePrice(formData.get("price"));
-  const isFeatured = formData.get("isFeatured") === "on";
-  const isActive = formData.get("isActive") === "on";
-  const imageFile = formData.get("thumbnail") as File | null;
+
+  const isActive = String(formData.get("isActive") ?? "1") === "1";
+  const isFeatured = String(formData.get("isFeatured") ?? "0") === "1";
 
   if (!title) {
     throw new Error("Tiêu đề sản phẩm không được để trống.");
   }
 
-  const currentProduct = await prisma.product.findUnique({
+  const existingProduct = await prisma.product.findUnique({
     where: { id },
     select: {
       id: true,
+      slug: true,
       thumbnailId: true,
     },
   });
 
-  if (!currentProduct) {
+  if (!existingProduct) {
     throw new Error("Sản phẩm không tồn tại.");
   }
 
-  const slug = await buildUniqueSlug(title, id);
+  const nextSlug =
+    title !== "" ? await buildUniqueSlug(title, id) : existingProduct.slug;
 
-  let newThumbnailId = currentProduct.thumbnailId;
+  let thumbnailId = existingProduct.thumbnailId;
 
-  if (imageFile && imageFile.size > 0) {
-    const media = await saveProductImage(imageFile);
-    newThumbnailId = media?.id ?? null;
+  const file = formData.get("thumbnail");
+  if (file instanceof File && file.size > 0) {
+    const media = await saveProductImage(file);
+    thumbnailId = media?.id ?? existingProduct.thumbnailId ?? null;
+
+    if (
+      existingProduct.thumbnailId &&
+      media?.id &&
+      existingProduct.thumbnailId !== media.id
+    ) {
+      await removeProductImage(existingProduct.thumbnailId);
+    }
   }
 
   await prisma.product.update({
     where: { id },
     data: {
+      categoryId,
       title,
-      slug,
+      slug: nextSlug,
       summary: summary || null,
       content: content || null,
       price,
-      categoryId,
-      thumbnailId: newThumbnailId,
-      isFeatured,
       isActive,
+      isFeatured,
+      thumbnailId,
     },
   });
 
-  if (
-    imageFile &&
-    imageFile.size > 0 &&
-    currentProduct.thumbnailId &&
-    currentProduct.thumbnailId !== newThumbnailId
-  ) {
-    await removeProductImage(currentProduct.thumbnailId);
-  }
-
   revalidatePath("/admin/products");
+  revalidatePath(`/admin/products/${id}/edit`);
   redirect("/admin/products");
 }
 
