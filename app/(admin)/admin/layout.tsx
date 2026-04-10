@@ -1,10 +1,15 @@
-import type { ReactNode } from "react";
-import styles from "./layout.module.scss";
 import { fontInter } from "./fonts";
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default function AdminRootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className={`${styles.container} ${fontInter.variable}`}>
+    <div
+      className={fontInter.variable}
+      style={{ fontFamily: "var(--font-inter)" }}
+    >
       {children}
     </div>
   );

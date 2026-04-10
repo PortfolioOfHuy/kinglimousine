@@ -1,0 +1,44 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 24px;
+  background: var(--admin-bg);
+}
+
+.contentInner {
+  min-height: calc(100vh - 72px - 48px);
+  padding: 22px;
+  border: 1px solid var(--admin-border);
+  border-radius: 22px;
+  background: var(--admin-surface);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+@media (max-width: 991px) {
+  .content {
+    padding: 16px;
+  }
+
+  .contentInner {
+    padding: 16px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contentInner {
+    min-height: calc(100vh - 64px - 32px);
+  }
+}

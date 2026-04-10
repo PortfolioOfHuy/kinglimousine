@@ -396,7 +396,8 @@ export const ModelName = {
   News: 'News',
   ContactMessage: 'ContactMessage',
   Visit: 'Visit',
-  VisitDailyStat: 'VisitDailyStat'
+  VisitDailyStat: 'VisitDailyStat',
+  OnlineSession: 'OnlineSession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -412,7 +413,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "media" | "websiteSetting" | "integrationSetting" | "seoPage" | "staticPage" | "productCategory" | "product" | "blog" | "news" | "contactMessage" | "visit" | "visitDailyStat"
+    modelProps: "user" | "media" | "websiteSetting" | "integrationSetting" | "seoPage" | "staticPage" | "productCategory" | "product" | "blog" | "news" | "contactMessage" | "visit" | "visitDailyStat" | "onlineSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1378,6 +1379,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    OnlineSession: {
+      payload: Prisma.$OnlineSessionPayload<ExtArgs>
+      fields: Prisma.OnlineSessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OnlineSessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OnlineSessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>
+        }
+        findFirst: {
+          args: Prisma.OnlineSessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OnlineSessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>
+        }
+        findMany: {
+          args: Prisma.OnlineSessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>[]
+        }
+        create: {
+          args: Prisma.OnlineSessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>
+        }
+        createMany: {
+          args: Prisma.OnlineSessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.OnlineSessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>[]
+        }
+        delete: {
+          args: Prisma.OnlineSessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>
+        }
+        update: {
+          args: Prisma.OnlineSessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.OnlineSessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OnlineSessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.OnlineSessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>[]
+        }
+        upsert: {
+          args: Prisma.OnlineSessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OnlineSessionPayload>
+        }
+        aggregate: {
+          args: Prisma.OnlineSessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOnlineSession>
+        }
+        groupBy: {
+          args: Prisma.OnlineSessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OnlineSessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OnlineSessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OnlineSessionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1688,6 +1763,20 @@ export const VisitDailyStatScalarFieldEnum = {
 } as const
 
 export type VisitDailyStatScalarFieldEnum = (typeof VisitDailyStatScalarFieldEnum)[keyof typeof VisitDailyStatScalarFieldEnum]
+
+
+export const OnlineSessionScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  path: 'path',
+  ipHash: 'ipHash',
+  userAgent: 'userAgent',
+  lastSeenAt: 'lastSeenAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OnlineSessionScalarFieldEnum = (typeof OnlineSessionScalarFieldEnum)[keyof typeof OnlineSessionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2026,6 +2115,7 @@ export type GlobalOmitConfig = {
   contactMessage?: Prisma.ContactMessageOmit
   visit?: Prisma.VisitOmit
   visitDailyStat?: Prisma.VisitDailyStatOmit
+  onlineSession?: Prisma.OnlineSessionOmit
 }
 
 /* Types for Logging */

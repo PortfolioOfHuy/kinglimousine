@@ -106,3 +106,8 @@ export type Visit = Prisma.VisitModel
  * 
  */
 export type VisitDailyStat = Prisma.VisitDailyStatModel
+/**
+ * Model OnlineSession
+ * 
+ */
+export type OnlineSession = Prisma.OnlineSessionModel

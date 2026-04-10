@@ -63,7 +63,8 @@ export const ModelName = {
   News: 'News',
   ContactMessage: 'ContactMessage',
   Visit: 'Visit',
-  VisitDailyStat: 'VisitDailyStat'
+  VisitDailyStat: 'VisitDailyStat',
+  OnlineSession: 'OnlineSession'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -353,6 +354,20 @@ export const VisitDailyStatScalarFieldEnum = {
 } as const
 
 export type VisitDailyStatScalarFieldEnum = (typeof VisitDailyStatScalarFieldEnum)[keyof typeof VisitDailyStatScalarFieldEnum]
+
+
+export const OnlineSessionScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  path: 'path',
+  ipHash: 'ipHash',
+  userAgent: 'userAgent',
+  lastSeenAt: 'lastSeenAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OnlineSessionScalarFieldEnum = (typeof OnlineSessionScalarFieldEnum)[keyof typeof OnlineSessionScalarFieldEnum]
 
 
 export const SortOrder = {
