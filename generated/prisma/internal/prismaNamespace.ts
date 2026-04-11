@@ -386,6 +386,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   User: 'User',
   Media: 'Media',
+  Slideshow: 'Slideshow',
   WebsiteSetting: 'WebsiteSetting',
   IntegrationSetting: 'IntegrationSetting',
   SeoPage: 'SeoPage',
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "media" | "websiteSetting" | "integrationSetting" | "seoPage" | "staticPage" | "productCategory" | "product" | "blog" | "news" | "contactMessage" | "visit" | "visitDailyStat" | "onlineSession"
+    modelProps: "user" | "media" | "slideshow" | "websiteSetting" | "integrationSetting" | "seoPage" | "staticPage" | "productCategory" | "product" | "blog" | "news" | "contactMessage" | "visit" | "visitDailyStat" | "onlineSession"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -562,6 +563,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MediaCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MediaCountAggregateOutputType> | number
+        }
+      }
+    }
+    Slideshow: {
+      payload: Prisma.$SlideshowPayload<ExtArgs>
+      fields: Prisma.SlideshowFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SlideshowFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SlideshowFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>
+        }
+        findFirst: {
+          args: Prisma.SlideshowFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SlideshowFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>
+        }
+        findMany: {
+          args: Prisma.SlideshowFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>[]
+        }
+        create: {
+          args: Prisma.SlideshowCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>
+        }
+        createMany: {
+          args: Prisma.SlideshowCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SlideshowCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>[]
+        }
+        delete: {
+          args: Prisma.SlideshowDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>
+        }
+        update: {
+          args: Prisma.SlideshowUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>
+        }
+        deleteMany: {
+          args: Prisma.SlideshowDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SlideshowUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SlideshowUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>[]
+        }
+        upsert: {
+          args: Prisma.SlideshowUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SlideshowPayload>
+        }
+        aggregate: {
+          args: Prisma.SlideshowAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSlideshow>
+        }
+        groupBy: {
+          args: Prisma.SlideshowGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SlideshowGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SlideshowCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SlideshowCountAggregateOutputType> | number
         }
       }
     }
@@ -1523,6 +1598,21 @@ export const MediaScalarFieldEnum = {
 export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
 
 
+export const SlideshowScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  altText: 'altText',
+  imageId: 'imageId',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SlideshowScalarFieldEnum = (typeof SlideshowScalarFieldEnum)[keyof typeof SlideshowScalarFieldEnum]
+
+
 export const WebsiteSettingScalarFieldEnum = {
   id: 'id',
   siteName: 'siteName',
@@ -2104,6 +2194,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   media?: Prisma.MediaOmit
+  slideshow?: Prisma.SlideshowOmit
   websiteSetting?: Prisma.WebsiteSettingOmit
   integrationSetting?: Prisma.IntegrationSettingOmit
   seoPage?: Prisma.SeoPageOmit

@@ -289,6 +289,7 @@ export type MediaWhereInput = {
   blogBanners?: Prisma.BlogListRelationFilter
   newsThumbnails?: Prisma.NewsListRelationFilter
   newsBanners?: Prisma.NewsListRelationFilter
+  slideshows?: Prisma.SlideshowListRelationFilter
 }
 
 export type MediaOrderByWithRelationInput = {
@@ -320,6 +321,7 @@ export type MediaOrderByWithRelationInput = {
   blogBanners?: Prisma.BlogOrderByRelationAggregateInput
   newsThumbnails?: Prisma.NewsOrderByRelationAggregateInput
   newsBanners?: Prisma.NewsOrderByRelationAggregateInput
+  slideshows?: Prisma.SlideshowOrderByRelationAggregateInput
 }
 
 export type MediaWhereUniqueInput = Prisma.AtLeast<{
@@ -354,6 +356,7 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   blogBanners?: Prisma.BlogListRelationFilter
   newsThumbnails?: Prisma.NewsListRelationFilter
   newsBanners?: Prisma.NewsListRelationFilter
+  slideshows?: Prisma.SlideshowListRelationFilter
 }, "id">
 
 export type MediaOrderByWithAggregationInput = {
@@ -419,6 +422,7 @@ export type MediaCreateInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateInput = {
@@ -449,6 +453,7 @@ export type MediaUncheckedCreateInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaUpdateInput = {
@@ -478,6 +483,7 @@ export type MediaUpdateInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateInput = {
@@ -508,6 +514,7 @@ export type MediaUncheckedUpdateInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateManyInput = {
@@ -614,6 +621,11 @@ export type MediaSumOrderByAggregateInput = {
   uploadedBy?: Prisma.SortOrder
 }
 
+export type MediaScalarRelationFilter = {
+  is?: Prisma.MediaWhereInput
+  isNot?: Prisma.MediaWhereInput
+}
+
 export type MediaNullableScalarRelationFilter = {
   is?: Prisma.MediaWhereInput | null
   isNot?: Prisma.MediaWhereInput | null
@@ -671,6 +683,20 @@ export type NullableIntFieldUpdateOperationsInput = {
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type MediaCreateNestedOneWithoutSlideshowsInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutSlideshowsInput, Prisma.MediaUncheckedCreateWithoutSlideshowsInput>
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutSlideshowsInput
+  connect?: Prisma.MediaWhereUniqueInput
+}
+
+export type MediaUpdateOneRequiredWithoutSlideshowsNestedInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutSlideshowsInput, Prisma.MediaUncheckedCreateWithoutSlideshowsInput>
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutSlideshowsInput
+  upsert?: Prisma.MediaUpsertWithoutSlideshowsInput
+  connect?: Prisma.MediaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutSlideshowsInput, Prisma.MediaUpdateWithoutSlideshowsInput>, Prisma.MediaUncheckedUpdateWithoutSlideshowsInput>
 }
 
 export type MediaCreateNestedOneWithoutWebsiteSettingLogosInput = {
@@ -955,6 +981,7 @@ export type MediaCreateWithoutUploaderInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutUploaderInput = {
@@ -984,6 +1011,7 @@ export type MediaUncheckedCreateWithoutUploaderInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutUploaderInput = {
@@ -1029,6 +1057,140 @@ export type MediaScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Media"> | Date | string
 }
 
+export type MediaCreateWithoutSlideshowsInput = {
+  fileName: string
+  filePath: string
+  fileType?: string | null
+  mimeType?: string | null
+  fileSize?: number | null
+  title?: string | null
+  altText?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  uploader?: Prisma.UserCreateNestedOneWithoutUploadedMediaInput
+  websiteSettingLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutLogoInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
+  seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
+  staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
+  staticPageBannerImages?: Prisma.StaticPageCreateNestedManyWithoutBannerImageInput
+  productCategoryImages?: Prisma.ProductCategoryCreateNestedManyWithoutImageInput
+  productCategoryBanners?: Prisma.ProductCategoryCreateNestedManyWithoutBannerImageInput
+  productThumbnails?: Prisma.ProductCreateNestedManyWithoutThumbnailInput
+  productBanners?: Prisma.ProductCreateNestedManyWithoutBannerImageInput
+  blogThumbnails?: Prisma.BlogCreateNestedManyWithoutThumbnailInput
+  blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
+  newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
+  newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+}
+
+export type MediaUncheckedCreateWithoutSlideshowsInput = {
+  id?: number
+  fileName: string
+  filePath: string
+  fileType?: string | null
+  mimeType?: string | null
+  fileSize?: number | null
+  title?: string | null
+  altText?: string | null
+  uploadedBy?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  websiteSettingLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutLogoInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
+  seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
+  staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
+  staticPageBannerImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutBannerImageInput
+  productCategoryImages?: Prisma.ProductCategoryUncheckedCreateNestedManyWithoutImageInput
+  productCategoryBanners?: Prisma.ProductCategoryUncheckedCreateNestedManyWithoutBannerImageInput
+  productThumbnails?: Prisma.ProductUncheckedCreateNestedManyWithoutThumbnailInput
+  productBanners?: Prisma.ProductUncheckedCreateNestedManyWithoutBannerImageInput
+  blogThumbnails?: Prisma.BlogUncheckedCreateNestedManyWithoutThumbnailInput
+  blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
+  newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
+  newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+}
+
+export type MediaCreateOrConnectWithoutSlideshowsInput = {
+  where: Prisma.MediaWhereUniqueInput
+  create: Prisma.XOR<Prisma.MediaCreateWithoutSlideshowsInput, Prisma.MediaUncheckedCreateWithoutSlideshowsInput>
+}
+
+export type MediaUpsertWithoutSlideshowsInput = {
+  update: Prisma.XOR<Prisma.MediaUpdateWithoutSlideshowsInput, Prisma.MediaUncheckedUpdateWithoutSlideshowsInput>
+  create: Prisma.XOR<Prisma.MediaCreateWithoutSlideshowsInput, Prisma.MediaUncheckedCreateWithoutSlideshowsInput>
+  where?: Prisma.MediaWhereInput
+}
+
+export type MediaUpdateToOneWithWhereWithoutSlideshowsInput = {
+  where?: Prisma.MediaWhereInput
+  data: Prisma.XOR<Prisma.MediaUpdateWithoutSlideshowsInput, Prisma.MediaUncheckedUpdateWithoutSlideshowsInput>
+}
+
+export type MediaUpdateWithoutSlideshowsInput = {
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  filePath?: Prisma.StringFieldUpdateOperationsInput | string
+  fileType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  uploader?: Prisma.UserUpdateOneWithoutUploadedMediaNestedInput
+  websiteSettingLogos?: Prisma.WebsiteSettingUpdateManyWithoutLogoNestedInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
+  seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
+  staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
+  staticPageBannerImages?: Prisma.StaticPageUpdateManyWithoutBannerImageNestedInput
+  productCategoryImages?: Prisma.ProductCategoryUpdateManyWithoutImageNestedInput
+  productCategoryBanners?: Prisma.ProductCategoryUpdateManyWithoutBannerImageNestedInput
+  productThumbnails?: Prisma.ProductUpdateManyWithoutThumbnailNestedInput
+  productBanners?: Prisma.ProductUpdateManyWithoutBannerImageNestedInput
+  blogThumbnails?: Prisma.BlogUpdateManyWithoutThumbnailNestedInput
+  blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
+  newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
+  newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+}
+
+export type MediaUncheckedUpdateWithoutSlideshowsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  filePath?: Prisma.StringFieldUpdateOperationsInput | string
+  fileType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  uploadedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  websiteSettingLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutLogoNestedInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
+  seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
+  staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
+  staticPageBannerImages?: Prisma.StaticPageUncheckedUpdateManyWithoutBannerImageNestedInput
+  productCategoryImages?: Prisma.ProductCategoryUncheckedUpdateManyWithoutImageNestedInput
+  productCategoryBanners?: Prisma.ProductCategoryUncheckedUpdateManyWithoutBannerImageNestedInput
+  productThumbnails?: Prisma.ProductUncheckedUpdateManyWithoutThumbnailNestedInput
+  productBanners?: Prisma.ProductUncheckedUpdateManyWithoutBannerImageNestedInput
+  blogThumbnails?: Prisma.BlogUncheckedUpdateManyWithoutThumbnailNestedInput
+  blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
+  newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
+  newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+}
+
 export type MediaCreateWithoutWebsiteSettingLogosInput = {
   fileName: string
   filePath: string
@@ -1055,6 +1217,7 @@ export type MediaCreateWithoutWebsiteSettingLogosInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutWebsiteSettingLogosInput = {
@@ -1084,6 +1247,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingLogosInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutWebsiteSettingLogosInput = {
@@ -1117,6 +1281,7 @@ export type MediaCreateWithoutWebsiteSettingFooterLogosInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutWebsiteSettingFooterLogosInput = {
@@ -1146,6 +1311,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingFooterLogosInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutWebsiteSettingFooterLogosInput = {
@@ -1179,6 +1345,7 @@ export type MediaCreateWithoutWebsiteSettingFaviconsInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutWebsiteSettingFaviconsInput = {
@@ -1208,6 +1375,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingFaviconsInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutWebsiteSettingFaviconsInput = {
@@ -1241,6 +1409,7 @@ export type MediaCreateWithoutWebsiteSettingOgImagesInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutWebsiteSettingOgImagesInput = {
@@ -1270,6 +1439,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingOgImagesInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutWebsiteSettingOgImagesInput = {
@@ -1314,6 +1484,7 @@ export type MediaUpdateWithoutWebsiteSettingLogosInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutWebsiteSettingLogosInput = {
@@ -1343,6 +1514,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingLogosInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutWebsiteSettingFooterLogosInput = {
@@ -1382,6 +1554,7 @@ export type MediaUpdateWithoutWebsiteSettingFooterLogosInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutWebsiteSettingFooterLogosInput = {
@@ -1411,6 +1584,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingFooterLogosInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutWebsiteSettingFaviconsInput = {
@@ -1450,6 +1624,7 @@ export type MediaUpdateWithoutWebsiteSettingFaviconsInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutWebsiteSettingFaviconsInput = {
@@ -1479,6 +1654,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingFaviconsInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutWebsiteSettingOgImagesInput = {
@@ -1518,6 +1694,7 @@ export type MediaUpdateWithoutWebsiteSettingOgImagesInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutWebsiteSettingOgImagesInput = {
@@ -1547,6 +1724,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingOgImagesInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateWithoutSeoOgImagesInput = {
@@ -1575,6 +1753,7 @@ export type MediaCreateWithoutSeoOgImagesInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutSeoOgImagesInput = {
@@ -1604,6 +1783,7 @@ export type MediaUncheckedCreateWithoutSeoOgImagesInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutSeoOgImagesInput = {
@@ -1637,6 +1817,7 @@ export type MediaCreateWithoutSeoTwitterImagesInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutSeoTwitterImagesInput = {
@@ -1666,6 +1847,7 @@ export type MediaUncheckedCreateWithoutSeoTwitterImagesInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutSeoTwitterImagesInput = {
@@ -1710,6 +1892,7 @@ export type MediaUpdateWithoutSeoOgImagesInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutSeoOgImagesInput = {
@@ -1739,6 +1922,7 @@ export type MediaUncheckedUpdateWithoutSeoOgImagesInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutSeoTwitterImagesInput = {
@@ -1778,6 +1962,7 @@ export type MediaUpdateWithoutSeoTwitterImagesInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutSeoTwitterImagesInput = {
@@ -1807,6 +1992,7 @@ export type MediaUncheckedUpdateWithoutSeoTwitterImagesInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateWithoutStaticPageFeaturedImagesInput = {
@@ -1835,6 +2021,7 @@ export type MediaCreateWithoutStaticPageFeaturedImagesInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutStaticPageFeaturedImagesInput = {
@@ -1864,6 +2051,7 @@ export type MediaUncheckedCreateWithoutStaticPageFeaturedImagesInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutStaticPageFeaturedImagesInput = {
@@ -1897,6 +2085,7 @@ export type MediaCreateWithoutStaticPageBannerImagesInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutStaticPageBannerImagesInput = {
@@ -1926,6 +2115,7 @@ export type MediaUncheckedCreateWithoutStaticPageBannerImagesInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutStaticPageBannerImagesInput = {
@@ -1970,6 +2160,7 @@ export type MediaUpdateWithoutStaticPageFeaturedImagesInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutStaticPageFeaturedImagesInput = {
@@ -1999,6 +2190,7 @@ export type MediaUncheckedUpdateWithoutStaticPageFeaturedImagesInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutStaticPageBannerImagesInput = {
@@ -2038,6 +2230,7 @@ export type MediaUpdateWithoutStaticPageBannerImagesInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutStaticPageBannerImagesInput = {
@@ -2067,6 +2260,7 @@ export type MediaUncheckedUpdateWithoutStaticPageBannerImagesInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateWithoutProductCategoryImagesInput = {
@@ -2095,6 +2289,7 @@ export type MediaCreateWithoutProductCategoryImagesInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutProductCategoryImagesInput = {
@@ -2124,6 +2319,7 @@ export type MediaUncheckedCreateWithoutProductCategoryImagesInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutProductCategoryImagesInput = {
@@ -2157,6 +2353,7 @@ export type MediaCreateWithoutProductCategoryBannersInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutProductCategoryBannersInput = {
@@ -2186,6 +2383,7 @@ export type MediaUncheckedCreateWithoutProductCategoryBannersInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutProductCategoryBannersInput = {
@@ -2230,6 +2428,7 @@ export type MediaUpdateWithoutProductCategoryImagesInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutProductCategoryImagesInput = {
@@ -2259,6 +2458,7 @@ export type MediaUncheckedUpdateWithoutProductCategoryImagesInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutProductCategoryBannersInput = {
@@ -2298,6 +2498,7 @@ export type MediaUpdateWithoutProductCategoryBannersInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutProductCategoryBannersInput = {
@@ -2327,6 +2528,7 @@ export type MediaUncheckedUpdateWithoutProductCategoryBannersInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateWithoutProductThumbnailsInput = {
@@ -2355,6 +2557,7 @@ export type MediaCreateWithoutProductThumbnailsInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutProductThumbnailsInput = {
@@ -2384,6 +2587,7 @@ export type MediaUncheckedCreateWithoutProductThumbnailsInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutProductThumbnailsInput = {
@@ -2417,6 +2621,7 @@ export type MediaCreateWithoutProductBannersInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutProductBannersInput = {
@@ -2446,6 +2651,7 @@ export type MediaUncheckedCreateWithoutProductBannersInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutProductBannersInput = {
@@ -2490,6 +2696,7 @@ export type MediaUpdateWithoutProductThumbnailsInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutProductThumbnailsInput = {
@@ -2519,6 +2726,7 @@ export type MediaUncheckedUpdateWithoutProductThumbnailsInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutProductBannersInput = {
@@ -2558,6 +2766,7 @@ export type MediaUpdateWithoutProductBannersInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutProductBannersInput = {
@@ -2587,6 +2796,7 @@ export type MediaUncheckedUpdateWithoutProductBannersInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateWithoutBlogThumbnailsInput = {
@@ -2615,6 +2825,7 @@ export type MediaCreateWithoutBlogThumbnailsInput = {
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutBlogThumbnailsInput = {
@@ -2644,6 +2855,7 @@ export type MediaUncheckedCreateWithoutBlogThumbnailsInput = {
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutBlogThumbnailsInput = {
@@ -2677,6 +2889,7 @@ export type MediaCreateWithoutBlogBannersInput = {
   blogThumbnails?: Prisma.BlogCreateNestedManyWithoutThumbnailInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutBlogBannersInput = {
@@ -2706,6 +2919,7 @@ export type MediaUncheckedCreateWithoutBlogBannersInput = {
   blogThumbnails?: Prisma.BlogUncheckedCreateNestedManyWithoutThumbnailInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutBlogBannersInput = {
@@ -2750,6 +2964,7 @@ export type MediaUpdateWithoutBlogThumbnailsInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutBlogThumbnailsInput = {
@@ -2779,6 +2994,7 @@ export type MediaUncheckedUpdateWithoutBlogThumbnailsInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutBlogBannersInput = {
@@ -2818,6 +3034,7 @@ export type MediaUpdateWithoutBlogBannersInput = {
   blogThumbnails?: Prisma.BlogUpdateManyWithoutThumbnailNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutBlogBannersInput = {
@@ -2847,6 +3064,7 @@ export type MediaUncheckedUpdateWithoutBlogBannersInput = {
   blogThumbnails?: Prisma.BlogUncheckedUpdateManyWithoutThumbnailNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateWithoutNewsThumbnailsInput = {
@@ -2875,6 +3093,7 @@ export type MediaCreateWithoutNewsThumbnailsInput = {
   blogThumbnails?: Prisma.BlogCreateNestedManyWithoutThumbnailInput
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutNewsThumbnailsInput = {
@@ -2904,6 +3123,7 @@ export type MediaUncheckedCreateWithoutNewsThumbnailsInput = {
   blogThumbnails?: Prisma.BlogUncheckedCreateNestedManyWithoutThumbnailInput
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutNewsThumbnailsInput = {
@@ -2937,6 +3157,7 @@ export type MediaCreateWithoutNewsBannersInput = {
   blogThumbnails?: Prisma.BlogCreateNestedManyWithoutThumbnailInput
   blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
 }
 
 export type MediaUncheckedCreateWithoutNewsBannersInput = {
@@ -2966,6 +3187,7 @@ export type MediaUncheckedCreateWithoutNewsBannersInput = {
   blogThumbnails?: Prisma.BlogUncheckedCreateNestedManyWithoutThumbnailInput
   blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
   newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
 }
 
 export type MediaCreateOrConnectWithoutNewsBannersInput = {
@@ -3010,6 +3232,7 @@ export type MediaUpdateWithoutNewsThumbnailsInput = {
   blogThumbnails?: Prisma.BlogUpdateManyWithoutThumbnailNestedInput
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutNewsThumbnailsInput = {
@@ -3039,6 +3262,7 @@ export type MediaUncheckedUpdateWithoutNewsThumbnailsInput = {
   blogThumbnails?: Prisma.BlogUncheckedUpdateManyWithoutThumbnailNestedInput
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUpsertWithoutNewsBannersInput = {
@@ -3078,6 +3302,7 @@ export type MediaUpdateWithoutNewsBannersInput = {
   blogThumbnails?: Prisma.BlogUpdateManyWithoutThumbnailNestedInput
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutNewsBannersInput = {
@@ -3107,6 +3332,7 @@ export type MediaUncheckedUpdateWithoutNewsBannersInput = {
   blogThumbnails?: Prisma.BlogUncheckedUpdateManyWithoutThumbnailNestedInput
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaCreateManyUploaderInput = {
@@ -3148,6 +3374,7 @@ export type MediaUpdateWithoutUploaderInput = {
   blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateWithoutUploaderInput = {
@@ -3177,6 +3404,7 @@ export type MediaUncheckedUpdateWithoutUploaderInput = {
   blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
   newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
   newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
 }
 
 export type MediaUncheckedUpdateManyWithoutUploaderInput = {
@@ -3214,6 +3442,7 @@ export type MediaCountOutputType = {
   blogBanners: number
   newsThumbnails: number
   newsBanners: number
+  slideshows: number
 }
 
 export type MediaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3233,6 +3462,7 @@ export type MediaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   blogBanners?: boolean | MediaCountOutputTypeCountBlogBannersArgs
   newsThumbnails?: boolean | MediaCountOutputTypeCountNewsThumbnailsArgs
   newsBanners?: boolean | MediaCountOutputTypeCountNewsBannersArgs
+  slideshows?: boolean | MediaCountOutputTypeCountSlideshowsArgs
 }
 
 /**
@@ -3357,6 +3587,13 @@ export type MediaCountOutputTypeCountNewsBannersArgs<ExtArgs extends runtime.Typ
   where?: Prisma.NewsWhereInput
 }
 
+/**
+ * MediaCountOutputType without action
+ */
+export type MediaCountOutputTypeCountSlideshowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SlideshowWhereInput
+}
+
 
 export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3387,6 +3624,7 @@ export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   blogBanners?: boolean | Prisma.Media$blogBannersArgs<ExtArgs>
   newsThumbnails?: boolean | Prisma.Media$newsThumbnailsArgs<ExtArgs>
   newsBanners?: boolean | Prisma.Media$newsBannersArgs<ExtArgs>
+  slideshows?: boolean | Prisma.Media$slideshowsArgs<ExtArgs>
   _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["media"]>
 
@@ -3453,6 +3691,7 @@ export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   blogBanners?: boolean | Prisma.Media$blogBannersArgs<ExtArgs>
   newsThumbnails?: boolean | Prisma.Media$newsThumbnailsArgs<ExtArgs>
   newsBanners?: boolean | Prisma.Media$newsBannersArgs<ExtArgs>
+  slideshows?: boolean | Prisma.Media$slideshowsArgs<ExtArgs>
   _count?: boolean | Prisma.MediaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MediaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3482,6 +3721,7 @@ export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     blogBanners: Prisma.$BlogPayload<ExtArgs>[]
     newsThumbnails: Prisma.$NewsPayload<ExtArgs>[]
     newsBanners: Prisma.$NewsPayload<ExtArgs>[]
+    slideshows: Prisma.$SlideshowPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -3906,6 +4146,7 @@ export interface Prisma__MediaClient<T, Null = never, ExtArgs extends runtime.Ty
   blogBanners<T extends Prisma.Media$blogBannersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$blogBannersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   newsThumbnails<T extends Prisma.Media$newsThumbnailsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$newsThumbnailsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   newsBanners<T extends Prisma.Media$newsBannersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$newsBannersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  slideshows<T extends Prisma.Media$slideshowsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$slideshowsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SlideshowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4747,6 +4988,30 @@ export type Media$newsBannersArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.NewsScalarFieldEnum | Prisma.NewsScalarFieldEnum[]
+}
+
+/**
+ * Media.slideshows
+ */
+export type Media$slideshowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Slideshow
+   */
+  select?: Prisma.SlideshowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Slideshow
+   */
+  omit?: Prisma.SlideshowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SlideshowInclude<ExtArgs> | null
+  where?: Prisma.SlideshowWhereInput
+  orderBy?: Prisma.SlideshowOrderByWithRelationInput | Prisma.SlideshowOrderByWithRelationInput[]
+  cursor?: Prisma.SlideshowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SlideshowScalarFieldEnum | Prisma.SlideshowScalarFieldEnum[]
 }
 
 /**

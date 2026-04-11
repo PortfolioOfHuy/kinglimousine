@@ -111,6 +111,26 @@ model Media {
 
   newsThumbnails News[] @relation("NewsThumbnail")
   newsBanners    News[] @relation("NewsBannerImage")
+
+  slideshows Slideshow[]
+}
+
+model Slideshow {
+  id        Int      @id @default(autoincrement())
+  title     String?
+  link      String?
+  altText   String?
+  imageId   Int
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  image Media @relation(fields: [imageId], references: [id], onDelete: Cascade)
+
+  @@index([sortOrder])
+  @@index([isActive])
+  @@index([imageId])
 }
 
 model WebsiteSetting {

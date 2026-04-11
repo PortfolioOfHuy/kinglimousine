@@ -28,6 +28,11 @@ export type User = Prisma.UserModel
  */
 export type Media = Prisma.MediaModel
 /**
+ * Model Slideshow
+ * 
+ */
+export type Slideshow = Prisma.SlideshowModel
+/**
  * Model WebsiteSetting
  * 
  */

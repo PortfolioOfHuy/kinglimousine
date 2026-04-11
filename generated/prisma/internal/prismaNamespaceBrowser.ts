@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Media: 'Media',
+  Slideshow: 'Slideshow',
   WebsiteSetting: 'WebsiteSetting',
   IntegrationSetting: 'IntegrationSetting',
   SeoPage: 'SeoPage',
@@ -112,6 +113,21 @@ export const MediaScalarFieldEnum = {
 } as const
 
 export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
+
+
+export const SlideshowScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  altText: 'altText',
+  imageId: 'imageId',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SlideshowScalarFieldEnum = (typeof SlideshowScalarFieldEnum)[keyof typeof SlideshowScalarFieldEnum]
 
 
 export const WebsiteSettingScalarFieldEnum = {

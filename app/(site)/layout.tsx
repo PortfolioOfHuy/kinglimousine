@@ -1,8 +1,8 @@
 import Footer from "@/components/modules/site/footer/page";
-import Header from "@/components/modules/site/header/page";
 import { openSans } from "./fonts";
 import styles from "./layout.module.scss";
 import SiteActivityTracker from "@/components/modules/site/SiteActivityTracker";
+import Header from "@/components/modules/site/header";
 
 export default function RootLayout({
   children,

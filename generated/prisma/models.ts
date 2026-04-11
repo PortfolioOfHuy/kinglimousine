@@ -10,6 +10,7 @@
  */
 export type * from './models/User'
 export type * from './models/Media'
+export type * from './models/Slideshow'
 export type * from './models/WebsiteSetting'
 export type * from './models/IntegrationSetting'
 export type * from './models/SeoPage'
