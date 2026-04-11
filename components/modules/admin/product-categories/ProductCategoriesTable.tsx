@@ -191,7 +191,6 @@ function DeleteCategoryButton({ id, name }: { id: number; name: string }) {
         open={open}
         centered
         destroyOnHidden
-        maskClosable={!submitting}
         closable={!submitting}
         onCancel={handleCancel}
         onOk={handleConfirm}

@@ -26,6 +26,19 @@ export default function AdminSidebar({ open, onClose }: Props) {
     pathname.startsWith("/admin/product-categories") ||
     pathname.startsWith("/admin/products");
 
+  const isImageGroupActive =
+    pathname.startsWith("/admin/logo") ||
+    pathname.startsWith("/admin/favicon") ||
+    pathname.startsWith("/admin/slideshow");
+
+  const [imageOpen, setImageOpen] = useState(isImageGroupActive);
+
+  useEffect(() => {
+    if (isImageGroupActive) {
+      setImageOpen(true);
+    }
+  }, [isImageGroupActive]);
+
   const [productOpen, setProductOpen] = useState(isProductGroupActive);
 
   useEffect(() => {
@@ -112,16 +125,74 @@ export default function AdminSidebar({ open, onClose }: Props) {
             </div>
           </div>
 
-          <Link
-            href="/admin/users"
-            className={`${styles.navItem} ${
-              pathname.startsWith("/admin/users") ? styles.active : ""
-            }`}
-            onClick={onClose}
-          >
-            <Users size={18} />
-            <span>Người dùng</span>
-          </Link>
+          <div className={styles.navGroup}>
+            <button
+              type="button"
+              className={`${styles.navGroupTrigger} ${
+                isImageGroupActive ? styles.navGroupTriggerActive : ""
+              }`}
+              onClick={() => setImageOpen((prev) => !prev)}
+            >
+              <span className={styles.navGroupLeft}>
+                <Users size={18} /> {/* bạn có thể đổi icon */}
+                <span>Quản lý hình ảnh</span>
+              </span>
+
+              <ChevronDown
+                size={18}
+                className={`${styles.navGroupArrow} ${
+                  imageOpen ? styles.navGroupArrowOpen : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`${styles.subNav} ${
+                imageOpen ? styles.subNavOpen : ""
+              }`}
+            >
+              <div className={styles.subNavInner}>
+                {/* Logo */}
+                <Link
+                  href="/admin/logo"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/logo")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Logo</span>
+                </Link>
+
+                {/* Favicon */}
+                <Link
+                  href="/admin/favicon"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/favicon")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Favicon</span>
+                </Link>
+
+                {/* Slideshow */}
+                <Link
+                  href="/admin/slideshow"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/slideshow")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Slideshow</span>
+                </Link>
+              </div>
+            </div>
+          </div>
 
           <Link
             href="/admin/settings"
@@ -131,7 +202,7 @@ export default function AdminSidebar({ open, onClose }: Props) {
             onClick={onClose}
           >
             <Settings size={18} />
-            <span>Cài đặt</span>
+            <span>Thiết lập thông tin</span>
           </Link>
         </nav>
       </aside>
