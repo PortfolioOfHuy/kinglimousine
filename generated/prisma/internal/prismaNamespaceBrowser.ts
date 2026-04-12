@@ -65,7 +65,9 @@ export const ModelName = {
   ContactMessage: 'ContactMessage',
   Visit: 'Visit',
   VisitDailyStat: 'VisitDailyStat',
-  OnlineSession: 'OnlineSession'
+  OnlineSession: 'OnlineSession',
+  Tag: 'Tag',
+  ProductTag: 'ProductTag'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -385,6 +387,25 @@ export const OnlineSessionScalarFieldEnum = {
 } as const
 
 export type OnlineSessionScalarFieldEnum = (typeof OnlineSessionScalarFieldEnum)[keyof typeof OnlineSessionScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const ProductTagScalarFieldEnum = {
+  productId: 'productId',
+  tagId: 'tagId'
+} as const
+
+export type ProductTagScalarFieldEnum = (typeof ProductTagScalarFieldEnum)[keyof typeof ProductTagScalarFieldEnum]
 
 
 export const SortOrder = {

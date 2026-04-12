@@ -286,10 +286,14 @@ model Product {
   creator User? @relation("ProductCreatedBy", fields: [createdBy], references: [id], onDelete: SetNull)
   updater User? @relation("ProductUpdatedBy", fields: [updatedBy], references: [id], onDelete: SetNull)
 
+  tags ProductTag[]
+
   @@index([categoryId])
   @@index([status])
   @@index([isActive])
+  @@index([isFeatured])
   @@index([sortOrder])
+  @@index([publishedAt])
 }
 
 model Blog {
@@ -421,4 +425,23 @@ model OnlineSession {
   updatedAt  DateTime @updatedAt
 
   @@index([lastSeenAt])
+}
+
+model Tag {
+  id        Int          @id @default(autoincrement())
+  name      String       @unique
+  slug      String       @unique
+  products  ProductTag[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model ProductTag {
+  productId Int
+  tagId     Int
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([productId, tagId])
+  @@index([tagId])
 }

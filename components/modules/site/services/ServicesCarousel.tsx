@@ -12,8 +12,7 @@ type Props = {
 };
 
 function getItemsPerView(width: number) {
-  if (width <= 767) return 2;
-  return 4;
+  return width <= 767 ? 2 : 4;
 }
 
 export default function ServicesCarousel({ services }: Props) {
@@ -22,7 +21,11 @@ export default function ServicesCarousel({ services }: Props) {
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      setItemsPerView(getItemsPerView(window.innerWidth));
+      const nextItemsPerView = getItemsPerView(window.innerWidth);
+
+      setItemsPerView((prev) =>
+        prev === nextItemsPerView ? prev : nextItemsPerView,
+      );
     };
 
     updateItemsPerView();
@@ -32,12 +35,11 @@ export default function ServicesCarousel({ services }: Props) {
   }, []);
 
   const maxIndex = Math.max(services.length - itemsPerView, 0);
+  const canSlide = services.length > itemsPerView;
 
   useEffect(() => {
     setCurrentIndex((prev) => Math.min(prev, maxIndex));
   }, [maxIndex]);
-
-  const canSlide = services.length > itemsPerView;
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
@@ -49,7 +51,7 @@ export default function ServicesCarousel({ services }: Props) {
 
   const trackStyle = useMemo(
     () => ({
-      transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+      transform: `translate3d(-${currentIndex * (100 / itemsPerView)}%, 0, 0)`,
     }),
     [currentIndex, itemsPerView],
   );
@@ -86,45 +88,51 @@ export default function ServicesCarousel({ services }: Props) {
 
           <div className={styles.viewport}>
             <div className={styles.track} style={trackStyle}>
-              {services.map((service) => (
-                <div
-                  key={service.id}
-                  className={styles.slide}
-                  style={{ width: `${100 / itemsPerView}%` }}
-                >
-                  <article className={styles.card}>
-                    <div className={styles.imageWrap}>
-                      <Image
-                        src={service.image}
-                        alt={service.imageAlt}
-                        fill
-                        className={styles.image}
-                        sizes="(max-width: 767px) 50vw, 25vw"
-                      />
-                    </div>
+              {services.map((service, index) => {
+                const isPriorityImage = index < itemsPerView;
 
-                    <div className={styles.overlay} />
+                return (
+                  <div
+                    key={service.id}
+                    className={styles.slide}
+                    style={{ width: `${100 / itemsPerView}%` }}
+                  >
+                    <article className={styles.card}>
+                      <div className={styles.imageWrap}>
+                        <Image
+                          src={service.image}
+                          alt={service.imageAlt}
+                          fill
+                          className={styles.image}
+                          sizes="(max-width: 767px) 50vw, 25vw"
+                          priority={isPriorityImage}
+                          loading={isPriorityImage ? "eager" : "lazy"}
+                        />
+                      </div>
 
-                    <div className={styles.content}>
-                      <h3 className={styles.title}>{service.title}</h3>
-                      <p className={styles.description}>
-                        {service.description}
-                      </p>
+                      <div className={styles.overlay} />
 
-                      <Link href={service.link} className={styles.moreButton}>
-                        <span className={styles.moreIcon}>
-                          <ArrowUpRight
-                            className={styles.moreIconSvg}
-                            size={18}
-                            strokeWidth={2.2}
-                          />
-                        </span>
-                        <span className={styles.moreText}>Xem Thêm</span>
-                      </Link>
-                    </div>
-                  </article>
-                </div>
-              ))}
+                      <div className={styles.content}>
+                        <h3 className={styles.title}>{service.title}</h3>
+                        <p className={styles.description}>
+                          {service.description}
+                        </p>
+
+                        <Link href={service.link} className={styles.moreButton}>
+                          <span className={styles.moreIcon}>
+                            <ArrowUpRight
+                              className={styles.moreIconSvg}
+                              size={18}
+                              strokeWidth={2.2}
+                            />
+                          </span>
+                          <span className={styles.moreText}>Xem Thêm</span>
+                        </Link>
+                      </div>
+                    </article>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

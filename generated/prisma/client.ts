@@ -116,3 +116,13 @@ export type VisitDailyStat = Prisma.VisitDailyStatModel
  * 
  */
 export type OnlineSession = Prisma.OnlineSessionModel
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model ProductTag
+ * 
+ */
+export type ProductTag = Prisma.ProductTagModel
