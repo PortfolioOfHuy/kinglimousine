@@ -255,13 +255,26 @@ export default function AdminSidebar({ open, onClose }: Props) {
                 <Link
                   href="/admin/why-choose-us"
                   className={`${styles.subNavItem} ${
-                    pathname.startsWith("/admin/why-choose-us")
+                    pathname.startsWith("/admin/why-choose-us") &&
+                    !pathname.startsWith("/admin/why-choose-us/items")
                       ? styles.subNavItemActive
                       : ""
                   }`}
                   onClick={onClose}
                 >
                   <span>Vì sao chọn chúng tôi</span>
+                </Link>
+
+                <Link
+                  href="/admin/why-choose-us/items"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/why-choose-us/items")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Các lý do nổi bật</span>
                 </Link>
               </div>
             </div>
