@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   ChevronDown,
+  FileText,
   FolderTree,
   LayoutDashboard,
   Package2,
@@ -31,21 +32,27 @@ export default function AdminSidebar({ open, onClose }: Props) {
     pathname.startsWith("/admin/favicon") ||
     pathname.startsWith("/admin/slideshow");
 
-  const [imageOpen, setImageOpen] = useState(isImageGroupActive);
-
-  useEffect(() => {
-    if (isImageGroupActive) {
-      setImageOpen(true);
-    }
-  }, [isImageGroupActive]);
+  const isPostGroupActive =
+    pathname.startsWith("/admin/services") ||
+    pathname.startsWith("/admin/fleet") ||
+    pathname.startsWith("/admin/how-to-book") ||
+    pathname.startsWith("/admin/why-choose-us");
 
   const [productOpen, setProductOpen] = useState(isProductGroupActive);
+  const [imageOpen, setImageOpen] = useState(isImageGroupActive);
+  const [postOpen, setPostOpen] = useState(isPostGroupActive);
 
   useEffect(() => {
-    if (isProductGroupActive) {
-      setProductOpen(true);
-    }
+    if (isProductGroupActive) setProductOpen(true);
   }, [isProductGroupActive]);
+
+  useEffect(() => {
+    if (isImageGroupActive) setImageOpen(true);
+  }, [isImageGroupActive]);
+
+  useEffect(() => {
+    if (isPostGroupActive) setPostOpen(true);
+  }, [isPostGroupActive]);
 
   return (
     <>
@@ -71,6 +78,7 @@ export default function AdminSidebar({ open, onClose }: Props) {
             <span>Bảng điều khiển</span>
           </Link>
 
+          {/* Quản lý sản phẩm */}
           <div className={styles.navGroup}>
             <button
               type="button"
@@ -93,7 +101,9 @@ export default function AdminSidebar({ open, onClose }: Props) {
             </button>
 
             <div
-              className={`${styles.subNav} ${productOpen ? styles.subNavOpen : ""}`}
+              className={`${styles.subNav} ${
+                productOpen ? styles.subNavOpen : ""
+              }`}
             >
               <div className={styles.subNavInner}>
                 <Link
@@ -125,6 +135,7 @@ export default function AdminSidebar({ open, onClose }: Props) {
             </div>
           </div>
 
+          {/* Quản lý hình ảnh */}
           <div className={styles.navGroup}>
             <button
               type="button"
@@ -134,7 +145,7 @@ export default function AdminSidebar({ open, onClose }: Props) {
               onClick={() => setImageOpen((prev) => !prev)}
             >
               <span className={styles.navGroupLeft}>
-                <Users size={18} /> {/* bạn có thể đổi icon */}
+                <Users size={18} />
                 <span>Quản lý hình ảnh</span>
               </span>
 
@@ -152,7 +163,6 @@ export default function AdminSidebar({ open, onClose }: Props) {
               }`}
             >
               <div className={styles.subNavInner}>
-                {/* Logo */}
                 <Link
                   href="/admin/logo"
                   className={`${styles.subNavItem} ${
@@ -165,7 +175,6 @@ export default function AdminSidebar({ open, onClose }: Props) {
                   <span>Logo</span>
                 </Link>
 
-                {/* Favicon */}
                 <Link
                   href="/admin/favicon"
                   className={`${styles.subNavItem} ${
@@ -178,7 +187,6 @@ export default function AdminSidebar({ open, onClose }: Props) {
                   <span>Favicon</span>
                 </Link>
 
-                {/* Slideshow */}
                 <Link
                   href="/admin/slideshow"
                   className={`${styles.subNavItem} ${
@@ -189,6 +197,71 @@ export default function AdminSidebar({ open, onClose }: Props) {
                   onClick={onClose}
                 >
                   <span>Slideshow</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Quản lý bài viết */}
+          <div className={styles.navGroup}>
+            <button
+              type="button"
+              className={`${styles.navGroupTrigger} ${
+                isPostGroupActive ? styles.navGroupTriggerActive : ""
+              }`}
+              onClick={() => setPostOpen((prev) => !prev)}
+            >
+              <span className={styles.navGroupLeft}>
+                <FileText size={18} />
+                <span>Quản lý bài viết</span>
+              </span>
+
+              <ChevronDown
+                size={18}
+                className={`${styles.navGroupArrow} ${
+                  postOpen ? styles.navGroupArrowOpen : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`${styles.subNav} ${postOpen ? styles.subNavOpen : ""}`}
+            >
+              <div className={styles.subNavInner}>
+                <Link
+                  href="/admin/services"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/services")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Dịch vụ của chúng tôi</span>
+                </Link>
+
+                <Link
+                  href="/admin/how-to-book"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/how-to-book")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Làm thế nào để đặt xe</span>
+                </Link>
+
+                <Link
+                  href="/admin/why-choose-us"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/why-choose-us")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Vì sao chọn chúng tôi</span>
                 </Link>
               </div>
             </div>
