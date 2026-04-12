@@ -50,6 +50,7 @@ export type StaticPageMinAggregateOutputType = {
   slug: string | null
   summary: string | null
   content: string | null
+  type: string | null
   templateType: $Enums.StaticPageTemplateType | null
   featuredImageId: number | null
   bannerImageId: number | null
@@ -69,6 +70,7 @@ export type StaticPageMaxAggregateOutputType = {
   slug: string | null
   summary: string | null
   content: string | null
+  type: string | null
   templateType: $Enums.StaticPageTemplateType | null
   featuredImageId: number | null
   bannerImageId: number | null
@@ -88,6 +90,7 @@ export type StaticPageCountAggregateOutputType = {
   slug: number
   summary: number
   content: number
+  type: number
   templateType: number
   featuredImageId: number
   bannerImageId: number
@@ -127,6 +130,7 @@ export type StaticPageMinAggregateInputType = {
   slug?: true
   summary?: true
   content?: true
+  type?: true
   templateType?: true
   featuredImageId?: true
   bannerImageId?: true
@@ -146,6 +150,7 @@ export type StaticPageMaxAggregateInputType = {
   slug?: true
   summary?: true
   content?: true
+  type?: true
   templateType?: true
   featuredImageId?: true
   bannerImageId?: true
@@ -165,6 +170,7 @@ export type StaticPageCountAggregateInputType = {
   slug?: true
   summary?: true
   content?: true
+  type?: true
   templateType?: true
   featuredImageId?: true
   bannerImageId?: true
@@ -271,6 +277,7 @@ export type StaticPageGroupByOutputType = {
   slug: string
   summary: string | null
   content: string | null
+  type: string | null
   templateType: $Enums.StaticPageTemplateType
   featuredImageId: number | null
   bannerImageId: number | null
@@ -313,6 +320,7 @@ export type StaticPageWhereInput = {
   slug?: Prisma.StringFilter<"StaticPage"> | string
   summary?: Prisma.StringNullableFilter<"StaticPage"> | string | null
   content?: Prisma.StringNullableFilter<"StaticPage"> | string | null
+  type?: Prisma.StringNullableFilter<"StaticPage"> | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFilter<"StaticPage"> | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.IntNullableFilter<"StaticPage"> | number | null
   bannerImageId?: Prisma.IntNullableFilter<"StaticPage"> | number | null
@@ -336,6 +344,7 @@ export type StaticPageOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   summary?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrderInput | Prisma.SortOrder
+  type?: Prisma.SortOrderInput | Prisma.SortOrder
   templateType?: Prisma.SortOrder
   featuredImageId?: Prisma.SortOrderInput | Prisma.SortOrder
   bannerImageId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -362,6 +371,7 @@ export type StaticPageWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"StaticPage"> | string
   summary?: Prisma.StringNullableFilter<"StaticPage"> | string | null
   content?: Prisma.StringNullableFilter<"StaticPage"> | string | null
+  type?: Prisma.StringNullableFilter<"StaticPage"> | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFilter<"StaticPage"> | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.IntNullableFilter<"StaticPage"> | number | null
   bannerImageId?: Prisma.IntNullableFilter<"StaticPage"> | number | null
@@ -385,6 +395,7 @@ export type StaticPageOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   summary?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrderInput | Prisma.SortOrder
+  type?: Prisma.SortOrderInput | Prisma.SortOrder
   templateType?: Prisma.SortOrder
   featuredImageId?: Prisma.SortOrderInput | Prisma.SortOrder
   bannerImageId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -412,6 +423,7 @@ export type StaticPageScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"StaticPage"> | string
   summary?: Prisma.StringNullableWithAggregatesFilter<"StaticPage"> | string | null
   content?: Prisma.StringNullableWithAggregatesFilter<"StaticPage"> | string | null
+  type?: Prisma.StringNullableWithAggregatesFilter<"StaticPage"> | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeWithAggregatesFilter<"StaticPage"> | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.IntNullableWithAggregatesFilter<"StaticPage"> | number | null
   bannerImageId?: Prisma.IntNullableWithAggregatesFilter<"StaticPage"> | number | null
@@ -430,6 +442,7 @@ export type StaticPageCreateInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   status?: $Enums.PublishStatus
   publishedAt?: Date | string | null
@@ -449,6 +462,7 @@ export type StaticPageUncheckedCreateInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   bannerImageId?: number | null
@@ -467,6 +481,7 @@ export type StaticPageUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -486,6 +501,7 @@ export type StaticPageUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -505,6 +521,7 @@ export type StaticPageCreateManyInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   bannerImageId?: number | null
@@ -523,6 +540,7 @@ export type StaticPageUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -538,6 +556,7 @@ export type StaticPageUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -567,6 +586,7 @@ export type StaticPageCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   templateType?: Prisma.SortOrder
   featuredImageId?: Prisma.SortOrder
   bannerImageId?: Prisma.SortOrder
@@ -595,6 +615,7 @@ export type StaticPageMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   templateType?: Prisma.SortOrder
   featuredImageId?: Prisma.SortOrder
   bannerImageId?: Prisma.SortOrder
@@ -614,6 +635,7 @@ export type StaticPageMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   content?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   templateType?: Prisma.SortOrder
   featuredImageId?: Prisma.SortOrder
   bannerImageId?: Prisma.SortOrder
@@ -817,6 +839,7 @@ export type StaticPageCreateWithoutCreatorInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   status?: $Enums.PublishStatus
   publishedAt?: Date | string | null
@@ -835,6 +858,7 @@ export type StaticPageUncheckedCreateWithoutCreatorInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   bannerImageId?: number | null
@@ -862,6 +886,7 @@ export type StaticPageCreateWithoutUpdaterInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   status?: $Enums.PublishStatus
   publishedAt?: Date | string | null
@@ -880,6 +905,7 @@ export type StaticPageUncheckedCreateWithoutUpdaterInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   bannerImageId?: number | null
@@ -927,6 +953,7 @@ export type StaticPageScalarWhereInput = {
   slug?: Prisma.StringFilter<"StaticPage"> | string
   summary?: Prisma.StringNullableFilter<"StaticPage"> | string | null
   content?: Prisma.StringNullableFilter<"StaticPage"> | string | null
+  type?: Prisma.StringNullableFilter<"StaticPage"> | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFilter<"StaticPage"> | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.IntNullableFilter<"StaticPage"> | number | null
   bannerImageId?: Prisma.IntNullableFilter<"StaticPage"> | number | null
@@ -961,6 +988,7 @@ export type StaticPageCreateWithoutFeaturedImageInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   status?: $Enums.PublishStatus
   publishedAt?: Date | string | null
@@ -979,6 +1007,7 @@ export type StaticPageUncheckedCreateWithoutFeaturedImageInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   bannerImageId?: number | null
   status?: $Enums.PublishStatus
@@ -1006,6 +1035,7 @@ export type StaticPageCreateWithoutBannerImageInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   status?: $Enums.PublishStatus
   publishedAt?: Date | string | null
@@ -1024,6 +1054,7 @@ export type StaticPageUncheckedCreateWithoutBannerImageInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   status?: $Enums.PublishStatus
@@ -1084,6 +1115,7 @@ export type StaticPageCreateManyCreatorInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   bannerImageId?: number | null
@@ -1102,6 +1134,7 @@ export type StaticPageCreateManyUpdaterInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   bannerImageId?: number | null
@@ -1119,6 +1152,7 @@ export type StaticPageUpdateWithoutCreatorInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1137,6 +1171,7 @@ export type StaticPageUncheckedUpdateWithoutCreatorInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1155,6 +1190,7 @@ export type StaticPageUncheckedUpdateManyWithoutCreatorInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1172,6 +1208,7 @@ export type StaticPageUpdateWithoutUpdaterInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1190,6 +1227,7 @@ export type StaticPageUncheckedUpdateWithoutUpdaterInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1208,6 +1246,7 @@ export type StaticPageUncheckedUpdateManyWithoutUpdaterInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1226,6 +1265,7 @@ export type StaticPageCreateManyFeaturedImageInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   bannerImageId?: number | null
   status?: $Enums.PublishStatus
@@ -1244,6 +1284,7 @@ export type StaticPageCreateManyBannerImageInput = {
   slug: string
   summary?: string | null
   content?: string | null
+  type?: string | null
   templateType?: $Enums.StaticPageTemplateType
   featuredImageId?: number | null
   status?: $Enums.PublishStatus
@@ -1261,6 +1302,7 @@ export type StaticPageUpdateWithoutFeaturedImageInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1279,6 +1321,7 @@ export type StaticPageUncheckedUpdateWithoutFeaturedImageInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
@@ -1297,6 +1340,7 @@ export type StaticPageUncheckedUpdateManyWithoutFeaturedImageInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   bannerImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
@@ -1314,6 +1358,7 @@ export type StaticPageUpdateWithoutBannerImageInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1332,6 +1377,7 @@ export type StaticPageUncheckedUpdateWithoutBannerImageInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
@@ -1350,6 +1396,7 @@ export type StaticPageUncheckedUpdateManyWithoutBannerImageInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   templateType?: Prisma.EnumStaticPageTemplateTypeFieldUpdateOperationsInput | $Enums.StaticPageTemplateType
   featuredImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumPublishStatusFieldUpdateOperationsInput | $Enums.PublishStatus
@@ -1370,6 +1417,7 @@ export type StaticPageSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   slug?: boolean
   summary?: boolean
   content?: boolean
+  type?: boolean
   templateType?: boolean
   featuredImageId?: boolean
   bannerImageId?: boolean
@@ -1393,6 +1441,7 @@ export type StaticPageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   slug?: boolean
   summary?: boolean
   content?: boolean
+  type?: boolean
   templateType?: boolean
   featuredImageId?: boolean
   bannerImageId?: boolean
@@ -1416,6 +1465,7 @@ export type StaticPageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   slug?: boolean
   summary?: boolean
   content?: boolean
+  type?: boolean
   templateType?: boolean
   featuredImageId?: boolean
   bannerImageId?: boolean
@@ -1439,6 +1489,7 @@ export type StaticPageSelectScalar = {
   slug?: boolean
   summary?: boolean
   content?: boolean
+  type?: boolean
   templateType?: boolean
   featuredImageId?: boolean
   bannerImageId?: boolean
@@ -1452,7 +1503,7 @@ export type StaticPageSelectScalar = {
   updatedAt?: boolean
 }
 
-export type StaticPageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "summary" | "content" | "templateType" | "featuredImageId" | "bannerImageId" | "status" | "publishedAt" | "sortOrder" | "showInMenu" | "createdBy" | "updatedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["staticPage"]>
+export type StaticPageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "summary" | "content" | "type" | "templateType" | "featuredImageId" | "bannerImageId" | "status" | "publishedAt" | "sortOrder" | "showInMenu" | "createdBy" | "updatedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["staticPage"]>
 export type StaticPageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   featuredImage?: boolean | Prisma.StaticPage$featuredImageArgs<ExtArgs>
   bannerImage?: boolean | Prisma.StaticPage$bannerImageArgs<ExtArgs>
@@ -1486,6 +1537,7 @@ export type $StaticPagePayload<ExtArgs extends runtime.Types.Extensions.Internal
     slug: string
     summary: string | null
     content: string | null
+    type: string | null
     templateType: $Enums.StaticPageTemplateType
     featuredImageId: number | null
     bannerImageId: number | null
@@ -1929,6 +1981,7 @@ export interface StaticPageFieldRefs {
   readonly slug: Prisma.FieldRef<"StaticPage", 'String'>
   readonly summary: Prisma.FieldRef<"StaticPage", 'String'>
   readonly content: Prisma.FieldRef<"StaticPage", 'String'>
+  readonly type: Prisma.FieldRef<"StaticPage", 'String'>
   readonly templateType: Prisma.FieldRef<"StaticPage", 'StaticPageTemplateType'>
   readonly featuredImageId: Prisma.FieldRef<"StaticPage", 'Int'>
   readonly bannerImageId: Prisma.FieldRef<"StaticPage", 'Int'>

@@ -54,8 +54,11 @@ export async function saveWhyChooseUsSection(formData: FormData) {
   const summary = String(formData.get("summary") || "").trim() || null;
   const imageFile = formData.get("featuredImage") as File | null;
 
-  const existing = await prisma.staticPage.findUnique({
-    where: { slug: "vi-sao-chon-chung-toi" },
+  const existing = await prisma.staticPage.findFirst({
+    where: {
+      slug: "vi-sao-chon-chung-toi",
+      type: "why-choose-us-section",
+    },
     select: {
       id: true,
       featuredImageId: true,
@@ -74,6 +77,8 @@ export async function saveWhyChooseUsSection(formData: FormData) {
       where: { id: existing.id },
       data: {
         title: "Vì sao chọn chúng tôi",
+        slug: "vi-sao-chon-chung-toi",
+        type: "why-choose-us-section",
         summary,
         featuredImageId,
         status: "PUBLISHED",
@@ -86,6 +91,7 @@ export async function saveWhyChooseUsSection(formData: FormData) {
       data: {
         title: "Vì sao chọn chúng tôi",
         slug: "vi-sao-chon-chung-toi",
+        type: "why-choose-us-section",
         summary,
         featuredImageId,
         status: "PUBLISHED",
@@ -97,4 +103,5 @@ export async function saveWhyChooseUsSection(formData: FormData) {
   }
 
   revalidatePath("/admin/why-choose-us");
+  revalidatePath("/");
 }

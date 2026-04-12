@@ -1,8 +1,8 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 720px;
+  height: min(100vh, 900px);
+  min-height: 780px;
   overflow: hidden;
   background: #000;
 }
@@ -189,11 +189,11 @@
 
 @media (max-width: 1200px) {
   .hero {
-    min-height: 680px;
+    height: 640px;
   }
 
   .content {
-    padding: 140px 48px 90px;
+    padding: 120px 48px 90px;
   }
 
   .textBox {
@@ -212,8 +212,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: 82vh;
-    min-height: 620px;
+    height: 520px; // fix cứng tablet/mobile
   }
 
   .overlay {
@@ -228,7 +227,7 @@
   }
 
   .content {
-    padding: 110px 20px 80px;
+    padding: 90px 20px 70px;
     align-items: flex-start;
     justify-content: flex-end;
   }
@@ -289,11 +288,11 @@
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 560px;
+    height: 440px;
   }
 
   .content {
-    padding: 96px 16px 72px;
+    padding: 76px 16px 64px;
   }
 
   .textBox {

@@ -11,7 +11,8 @@
     backdrop-filter 0.3s ease;
 }
 
-.scrolled {
+.scrolled,
+.alwaysLight {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
@@ -66,13 +67,14 @@
     opacity 0.3s ease;
 }
 
-/* Ở top: logo trắng */
-.header:not(.scrolled) .logo {
+/* Chỉ homepage ở top mới trắng */
+.header:not(.scrolled):not(.alwaysLight) .logo {
   filter: brightness(0) invert(1);
 }
 
-/* Scroll: logo về màu gốc */
-.scrolled .logo {
+/* Scroll hoặc trang khác thì logo về màu gốc */
+.scrolled .logo,
+.alwaysLight .logo {
   filter: none;
 }
 
@@ -162,37 +164,41 @@
   }
 }
 
-/* ===== TOP ===== */
-.header:not(.scrolled) .siteName {
+/* ===== HOMEPAGE TOP ===== */
+.header:not(.scrolled):not(.alwaysLight) .siteName {
   color: #ffffff;
 }
 
-.header:not(.scrolled) .menuIcon span {
+.header:not(.scrolled):not(.alwaysLight) .menuIcon span {
   background: #ffffff;
 }
 
-.header:not(.scrolled) .searchIcon::before {
+.header:not(.scrolled):not(.alwaysLight) .searchIcon::before {
   border-color: #ffffff;
 }
 
-.header:not(.scrolled) .searchIcon::after {
+.header:not(.scrolled):not(.alwaysLight) .searchIcon::after {
   background: #ffffff;
 }
 
-/* ===== SCROLLED ===== */
-.scrolled .siteName {
+/* ===== SCROLLED + OTHER PAGES ===== */
+.scrolled .siteName,
+.alwaysLight .siteName {
   color: #111111;
 }
 
-.scrolled .menuIcon span {
+.scrolled .menuIcon span,
+.alwaysLight .menuIcon span {
   background: #111111;
 }
 
-.scrolled .searchIcon::before {
+.scrolled .searchIcon::before,
+.alwaysLight .searchIcon::before {
   border-color: #111111;
 }
 
-.scrolled .searchIcon::after {
+.scrolled .searchIcon::after,
+.alwaysLight .searchIcon::after {
   background: #111111;
 }
 
@@ -203,7 +209,8 @@
   transition: background 0.3s ease;
 }
 
-.scrolled .bottomLine {
+.scrolled .bottomLine,
+.alwaysLight .bottomLine {
   background: rgba(0, 0, 0, 0.08);
 }
 

@@ -80,6 +80,7 @@ export async function createHowToBook(formData: FormData) {
       slug,
       summary,
       content,
+      type: "how-to-book",
       featuredImageId,
       sortOrder: 0,
       showInMenu: false,

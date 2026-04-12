@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 import { Drawer } from "antd";
+import { usePathname } from "next/navigation";
 import styles from "./SiteHeader.module.scss";
 
 type Props = {
@@ -18,10 +19,18 @@ export default function SiteHeader({
   logoAlt = "Logo",
   siteName = "KING LIMOUSINE",
 }: Props) {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
+    if (!isHomePage) {
+      setScrolled(true);
+      return;
+    }
+
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -30,11 +39,17 @@ export default function SiteHeader({
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHomePage]);
 
   return (
     <>
-      <header className={clsx(styles.header, scrolled && styles.scrolled)}>
+      <header
+        className={clsx(
+          styles.header,
+          scrolled && styles.scrolled,
+          !isHomePage && styles.alwaysLight,
+        )}
+      >
         <div className={styles.inner}>
           <div className={styles.left}>
             <button

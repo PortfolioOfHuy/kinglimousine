@@ -210,6 +210,7 @@ model StaticPage {
   slug            String                 @unique
   summary         String?
   content         String?
+  type            String?
   templateType    StaticPageTemplateType @default(DEFAULT)
   featuredImageId Int?
   bannerImageId   Int?

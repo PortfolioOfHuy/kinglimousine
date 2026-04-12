@@ -205,6 +205,7 @@ export const StaticPageScalarFieldEnum = {
   slug: 'slug',
   summary: 'summary',
   content: 'content',
+  type: 'type',
   templateType: 'templateType',
   featuredImageId: 'featuredImageId',
   bannerImageId: 'bannerImageId',

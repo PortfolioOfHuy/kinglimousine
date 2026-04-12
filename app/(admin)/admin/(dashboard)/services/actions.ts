@@ -75,6 +75,7 @@ export async function createService(formData: FormData) {
       slug,
       summary,
       content,
+      type: "service",
       featuredImageId,
       sortOrder: 0,
       showInMenu: false,
