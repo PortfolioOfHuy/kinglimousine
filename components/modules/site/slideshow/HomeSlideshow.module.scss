@@ -1,0 +1,311 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+  background: #000;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.42) 0%,
+      rgba(0, 0, 0, 0.22) 34%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.04) 28%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 150px 90px 100px;
+  pointer-events: none;
+}
+
+.textBox {
+  max-width: 620px;
+  text-align: right;
+  color: #fff;
+  pointer-events: auto;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 3vw, 58px);
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.description {
+  margin: 0 0 24px auto;
+  max-width: 520px;
+  font-size: clamp(16px, 1.15vw, 24px);
+  line-height: 1.7;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+  min-width: 160px;
+  height: 48px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.cta:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #111;
+  transform: translateY(-1px);
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.navButton:hover {
+  opacity: 0.85;
+}
+
+.navButton:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.navButton :global(.anticon) {
+  font-size: 34px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
+.prevButton {
+  left: 18px;
+}
+
+.nextButton {
+  right: 18px;
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 3;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.activeDot {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    min-height: 680px;
+  }
+
+  .content {
+    padding: 140px 48px 90px;
+  }
+
+  .textBox {
+    max-width: 560px;
+  }
+
+  .title {
+    font-size: clamp(30px, 4vw, 50px);
+  }
+
+  .description {
+    max-width: 500px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 82vh;
+    min-height: 620px;
+  }
+
+  .overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.16) 35%,
+        rgba(0, 0, 0, 0.26) 100%
+      ),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.08) 100%);
+  }
+
+  .content {
+    padding: 110px 20px 80px;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .textBox {
+    max-width: calc(100% - 36px);
+    text-align: right;
+  }
+
+  .title {
+    margin-bottom: 12px;
+    font-size: clamp(26px, 7vw, 38px);
+    line-height: 1.18;
+  }
+
+  .description {
+    max-width: 100%;
+    margin-left: auto;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .cta {
+    min-width: 140px;
+    height: 44px;
+    padding: 0 20px;
+    margin-top: 22px;
+    font-size: 14px;
+  }
+
+  .navButton {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navButton :global(.anticon) {
+    font-size: 28px;
+  }
+
+  .prevButton {
+    left: 8px;
+  }
+
+  .nextButton {
+    right: 8px;
+  }
+
+  .dots {
+    bottom: 18px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 560px;
+  }
+
+  .content {
+    padding: 96px 16px 72px;
+  }
+
+  .textBox {
+    max-width: calc(100% - 24px);
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}

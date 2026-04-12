@@ -87,7 +87,6 @@ export default function SiteHeader({
         placement="left"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        width={320}
       >
         <nav className={styles.drawerNav}>
           <Link href="/" onClick={() => setDrawerOpen(false)}>
