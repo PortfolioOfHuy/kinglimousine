@@ -3,12 +3,14 @@
   min-height: 100vh;
   background: #fff;
   color: #111;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .container main {
-  min-height: 100vh;
+  flex: 1 0 auto;
   display: block;
+  min-width: 0;
 }
 
 .container :global(img) {
