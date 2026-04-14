@@ -15,7 +15,7 @@ export default async function EditProductPage({ params }: Props) {
     notFound();
   }
 
-  const [categories, product] = await Promise.all([
+  const [categories, tags, product] = await Promise.all([
     prisma.productCategory.findMany({
       where: { isActive: true },
       orderBy: [{ sortOrder: "asc" }, { id: "asc" }],
@@ -24,10 +24,23 @@ export default async function EditProductPage({ params }: Props) {
         name: true,
       },
     }),
+    prisma.tag.findMany({
+      orderBy: [{ name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+      },
+    }),
     prisma.product.findUnique({
       where: { id: productId },
       include: {
         thumbnail: true,
+        tags: {
+          select: {
+            tagId: true,
+          },
+        },
       },
     }),
   ]);
@@ -44,6 +57,7 @@ export default async function EditProductPage({ params }: Props) {
       submitLabel="Lưu thay đổi"
       action={action}
       categories={categories}
+      tagOptions={tags}
       defaultValues={{
         categoryId: product.categoryId,
         title: product.title,
@@ -53,6 +67,7 @@ export default async function EditProductPage({ params }: Props) {
         isFeatured: product.isFeatured,
         isActive: product.isActive,
         thumbnailPath: product.thumbnail?.filePath ?? null,
+        tagIds: product.tags.map((item) => item.tagId),
       }}
     />
   );

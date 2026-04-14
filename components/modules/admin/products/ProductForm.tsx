@@ -8,11 +8,18 @@ type CategoryOption = {
   name: string;
 };
 
+type TagOption = {
+  id: number;
+  name: string;
+  slug: string;
+};
+
 type ProductFormProps = {
   title: string;
   submitLabel: string;
   action: (formData: FormData) => void | Promise<void>;
   categories: CategoryOption[];
+  tagOptions: TagOption[];
   defaultValues?: {
     categoryId?: number | null;
     title?: string;
@@ -22,6 +29,7 @@ type ProductFormProps = {
     isFeatured?: boolean;
     isActive?: boolean;
     thumbnailPath?: string | null;
+    tagIds?: number[];
   };
 };
 
@@ -30,6 +38,7 @@ export default function ProductForm({
   submitLabel,
   action,
   categories,
+  tagOptions,
   defaultValues,
 }: ProductFormProps) {
   const isEditMode = Boolean(defaultValues);
@@ -39,6 +48,8 @@ export default function ProductForm({
   const hiddenIsFeatured = isEditMode
     ? (defaultValues?.isFeatured ?? false)
     : false;
+
+  const selectedTagIds = new Set(defaultValues?.tagIds ?? []);
 
   return (
     <div className={styles.wrapper}>
@@ -129,6 +140,31 @@ export default function ProductForm({
                   placeholder="Nhập tiêu đề sản phẩm..."
                   className={styles.input}
                 />
+              </div>
+
+              <div className={styles.field}>
+                <label className={styles.label}>Thẻ sản phẩm</label>
+
+                {tagOptions.length === 0 ? (
+                  <div className={styles.tagsEmpty}>
+                    Chưa có thẻ sản phẩm nào.
+                  </div>
+                ) : (
+                  <div className={styles.tagsGrid}>
+                    {tagOptions.map((tag) => (
+                      <label key={tag.id} className={styles.tagOption}>
+                        <input
+                          type="checkbox"
+                          name="tagIds"
+                          value={tag.id}
+                          defaultChecked={selectedTagIds.has(tag.id)}
+                          className={styles.tagCheckbox}
+                        />
+                        <span className={styles.tagLabel}>{tag.name}</span>
+                      </label>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className={styles.field}>

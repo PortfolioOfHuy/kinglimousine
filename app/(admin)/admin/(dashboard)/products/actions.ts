@@ -47,6 +47,18 @@ function parseOptionalInt(value: FormDataEntryValue | null) {
   return Number.isNaN(num) || num <= 0 ? null : num;
 }
 
+function parseTagIds(formData: FormData) {
+  const values = formData.getAll("tagIds");
+
+  return Array.from(
+    new Set(
+      values
+        .map((value) => Number(String(value)))
+        .filter((value) => Number.isInteger(value) && value > 0),
+    ),
+  );
+}
+
 function parsePrice(value: FormDataEntryValue | null) {
   const raw = String(value ?? "")
     .trim()
@@ -69,6 +81,7 @@ export async function createProduct(formData: FormData) {
   const content = String(formData.get("content") ?? "").trim();
   const categoryId = parseOptionalInt(formData.get("categoryId"));
   const price = parsePrice(formData.get("price"));
+  const tagIds = parseTagIds(formData);
 
   const isFeatured = String(formData.get("isFeatured") ?? "0") === "1";
   const isActive = String(formData.get("isActive") ?? "1") === "1";
@@ -95,6 +108,11 @@ export async function createProduct(formData: FormData) {
       isActive,
       status: "PUBLISHED",
       publishedAt: new Date(),
+      tags: {
+        create: tagIds.map((tagId) => ({
+          tagId,
+        })),
+      },
     },
   });
 
@@ -108,6 +126,7 @@ export async function updateProduct(id: number, formData: FormData) {
   const content = String(formData.get("content") ?? "").trim();
   const categoryId = parseOptionalInt(formData.get("categoryId"));
   const price = parsePrice(formData.get("price"));
+  const tagIds = parseTagIds(formData);
 
   const isActive = String(formData.get("isActive") ?? "1") === "1";
   const isFeatured = String(formData.get("isFeatured") ?? "0") === "1";
@@ -160,6 +179,12 @@ export async function updateProduct(id: number, formData: FormData) {
       isActive,
       isFeatured,
       thumbnailId,
+      tags: {
+        deleteMany: {},
+        create: tagIds.map((tagId) => ({
+          tagId,
+        })),
+      },
     },
   });
 

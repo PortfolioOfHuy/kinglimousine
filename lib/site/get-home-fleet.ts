@@ -68,6 +68,11 @@ export async function getHomeFleet(): Promise<HomeFleetData> {
       include: {
         category: true,
         thumbnail: true,
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
       },
       orderBy: [{ sortOrder: "asc" }, { id: "asc" }],
     }),
@@ -100,6 +105,7 @@ export async function getHomeFleet(): Promise<HomeFleetData> {
         priceText: formatPrice(product.price),
         categorySlug: product.category!.slug,
         categoryName: product.category!.name,
+        tags: product.tags.map((item) => item.tag.name),
       })),
   };
 }

@@ -11,6 +11,7 @@ import {
   Package2,
   Settings,
   ShoppingBag,
+  Tags,
   Users,
 } from "lucide-react";
 import styles from "./admin-sidebar.module.scss";
@@ -100,38 +101,45 @@ export default function AdminSidebar({ open, onClose }: Props) {
               />
             </button>
 
-            <div
-              className={`${styles.subNav} ${
-                productOpen ? styles.subNavOpen : ""
-              }`}
-            >
-              <div className={styles.subNavInner}>
-                <Link
-                  href="/admin/product-categories"
-                  className={`${styles.subNavItem} ${
-                    pathname.startsWith("/admin/product-categories")
-                      ? styles.subNavItemActive
-                      : ""
-                  }`}
-                  onClick={onClose}
-                >
-                  <FolderTree size={16} />
-                  <span>Danh mục cấp 1</span>
-                </Link>
+            <div className={styles.subNavInner}>
+              <Link
+                href="/admin/product-categories"
+                className={`${styles.subNavItem} ${
+                  pathname.startsWith("/admin/product-categories")
+                    ? styles.subNavItemActive
+                    : ""
+                }`}
+                onClick={onClose}
+              >
+                <FolderTree size={16} />
+                <span>Danh mục cấp 1</span>
+              </Link>
 
-                <Link
-                  href="/admin/products"
-                  className={`${styles.subNavItem} ${
-                    pathname.startsWith("/admin/products")
-                      ? styles.subNavItemActive
-                      : ""
-                  }`}
-                  onClick={onClose}
-                >
-                  <ShoppingBag size={16} />
-                  <span>Sản phẩm</span>
-                </Link>
-              </div>
+              <Link
+                href="/admin/tags"
+                className={`${styles.subNavItem} ${
+                  pathname.startsWith("/admin/tags")
+                    ? styles.subNavItemActive
+                    : ""
+                }`}
+                onClick={onClose}
+              >
+                <Tags size={16} />
+                <span>Thẻ sản phẩm</span>
+              </Link>
+
+              <Link
+                href="/admin/products"
+                className={`${styles.subNavItem} ${
+                  pathname.startsWith("/admin/products")
+                    ? styles.subNavItemActive
+                    : ""
+                }`}
+                onClick={onClose}
+              >
+                <ShoppingBag size={16} />
+                <span>Sản phẩm</span>
+              </Link>
             </div>
           </div>
 

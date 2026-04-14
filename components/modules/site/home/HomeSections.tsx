@@ -8,9 +8,15 @@ type Props = {
   slideshow: ReactNode;
   services: ReactNode;
   fleet: ReactNode;
+  howToBook: ReactNode;
 };
 
-export default function HomeSections({ slideshow, services, fleet }: Props) {
+export default function HomeSections({
+  slideshow,
+  services,
+  fleet,
+  howToBook,
+}: Props) {
   return (
     <>
       <motion.div
@@ -23,6 +29,7 @@ export default function HomeSections({ slideshow, services, fleet }: Props) {
 
       <Reveal delay={0.08}>{services}</Reveal>
       <Reveal delay={0.12}>{fleet}</Reveal>
+      <Reveal delay={0.16}>{howToBook}</Reveal>
     </>
   );
 }
