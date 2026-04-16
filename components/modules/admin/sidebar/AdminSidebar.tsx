@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
+  BookOpen,
   ChevronDown,
   FileText,
   FolderTree,
@@ -26,6 +27,7 @@ export default function AdminSidebar({ open, onClose }: Props) {
 
   const isProductGroupActive =
     pathname.startsWith("/admin/product-categories") ||
+    pathname.startsWith("/admin/tags") ||
     pathname.startsWith("/admin/products");
 
   const isImageGroupActive =
@@ -39,21 +41,31 @@ export default function AdminSidebar({ open, onClose }: Props) {
     pathname.startsWith("/admin/how-to-book") ||
     pathname.startsWith("/admin/why-choose-us");
 
+  const isPageGroupActive =
+    pathname.startsWith("/admin/news") ||
+    pathname.startsWith("/admin/posts") ||
+    pathname.startsWith("/admin/about");
+
   const [productOpen, setProductOpen] = useState(isProductGroupActive);
   const [imageOpen, setImageOpen] = useState(isImageGroupActive);
   const [postOpen, setPostOpen] = useState(isPostGroupActive);
+  const [pageOpen, setPageOpen] = useState(isPageGroupActive);
 
   useEffect(() => {
-    if (isProductGroupActive) setProductOpen(true);
+    setProductOpen(isProductGroupActive);
   }, [isProductGroupActive]);
 
   useEffect(() => {
-    if (isImageGroupActive) setImageOpen(true);
+    setImageOpen(isImageGroupActive);
   }, [isImageGroupActive]);
 
   useEffect(() => {
-    if (isPostGroupActive) setPostOpen(true);
+    setPostOpen(isPostGroupActive);
   }, [isPostGroupActive]);
+
+  useEffect(() => {
+    setPageOpen(isPageGroupActive);
+  }, [isPageGroupActive]);
 
   return (
     <>
@@ -79,7 +91,6 @@ export default function AdminSidebar({ open, onClose }: Props) {
             <span>Bảng điều khiển</span>
           </Link>
 
-          {/* Quản lý sản phẩm */}
           <div className={styles.navGroup}>
             <button
               type="button"
@@ -101,49 +112,54 @@ export default function AdminSidebar({ open, onClose }: Props) {
               />
             </button>
 
-            <div className={styles.subNavInner}>
-              <Link
-                href="/admin/product-categories"
-                className={`${styles.subNavItem} ${
-                  pathname.startsWith("/admin/product-categories")
-                    ? styles.subNavItemActive
-                    : ""
-                }`}
-                onClick={onClose}
-              >
-                <FolderTree size={16} />
-                <span>Danh mục cấp 1</span>
-              </Link>
+            <div
+              className={`${styles.subNav} ${
+                productOpen ? styles.subNavOpen : ""
+              }`}
+            >
+              <div className={styles.subNavInner}>
+                <Link
+                  href="/admin/product-categories"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/product-categories")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <FolderTree size={16} />
+                  <span>Danh mục cấp 1</span>
+                </Link>
 
-              <Link
-                href="/admin/tags"
-                className={`${styles.subNavItem} ${
-                  pathname.startsWith("/admin/tags")
-                    ? styles.subNavItemActive
-                    : ""
-                }`}
-                onClick={onClose}
-              >
-                <Tags size={16} />
-                <span>Thẻ sản phẩm</span>
-              </Link>
+                <Link
+                  href="/admin/tags"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/tags")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <Tags size={16} />
+                  <span>Thẻ sản phẩm</span>
+                </Link>
 
-              <Link
-                href="/admin/products"
-                className={`${styles.subNavItem} ${
-                  pathname.startsWith("/admin/products")
-                    ? styles.subNavItemActive
-                    : ""
-                }`}
-                onClick={onClose}
-              >
-                <ShoppingBag size={16} />
-                <span>Sản phẩm</span>
-              </Link>
+                <Link
+                  href="/admin/products"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/products")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <ShoppingBag size={16} />
+                  <span>Sản phẩm</span>
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Quản lý hình ảnh */}
           <div className={styles.navGroup}>
             <button
               type="button"
@@ -210,7 +226,6 @@ export default function AdminSidebar({ open, onClose }: Props) {
             </div>
           </div>
 
-          {/* Quản lý bài viết */}
           <div className={styles.navGroup}>
             <button
               type="button"
@@ -283,6 +298,70 @@ export default function AdminSidebar({ open, onClose }: Props) {
                   onClick={onClose}
                 >
                   <span>Các lý do nổi bật</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.navGroup}>
+            <button
+              type="button"
+              className={`${styles.navGroupTrigger} ${
+                isPageGroupActive ? styles.navGroupTriggerActive : ""
+              }`}
+              onClick={() => setPageOpen((prev) => !prev)}
+            >
+              <span className={styles.navGroupLeft}>
+                <BookOpen size={18} />
+                <span>Quản lý page</span>
+              </span>
+
+              <ChevronDown
+                size={18}
+                className={`${styles.navGroupArrow} ${
+                  pageOpen ? styles.navGroupArrowOpen : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`${styles.subNav} ${pageOpen ? styles.subNavOpen : ""}`}
+            >
+              <div className={styles.subNavInner}>
+                <Link
+                  href="/admin/news"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/news")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Tin tức</span>
+                </Link>
+
+                <Link
+                  href="/admin/posts"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/posts")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Bài viết</span>
+                </Link>
+
+                <Link
+                  href="/admin/about"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/about")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>Giới thiệu</span>
                 </Link>
               </div>
             </div>

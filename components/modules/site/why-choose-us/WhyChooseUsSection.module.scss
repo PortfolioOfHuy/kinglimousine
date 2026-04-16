@@ -57,10 +57,12 @@
 }
 
 .grid {
+  --grid-columns: 1;
+
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
   min-height: 520px;
 }
 
@@ -191,7 +193,6 @@
   transform: rotate(45deg);
 }
 
-/* trạng thái hover desktop */
 .card:hover .cardOverlay {
   background: rgba(217, 173, 100, 0.72);
 }
@@ -231,25 +232,26 @@
     border-top: 1px solid rgba(255, 255, 255, 0.14);
   }
 
+  .card:first-child {
+    border-top: 0;
+  }
+
   .cardInner {
     min-height: 220px;
   }
 
-  .cardOverlay,
-  .featureCard .cardOverlay {
+  .cardOverlay {
     background: rgba(217, 173, 100, 0.68);
   }
 
-  .cardContent,
-  .featureCard .cardContent {
+  .cardContent {
     opacity: 1;
     visibility: visible;
     transform: none;
     padding: 24px 16px 18px;
   }
 
-  .bottomTitle,
-  .featureCard .bottomTitle {
+  .bottomTitle {
     display: none;
   }
 

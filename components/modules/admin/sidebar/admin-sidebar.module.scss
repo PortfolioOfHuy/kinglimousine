@@ -151,7 +151,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 0 0 0 20px; // tăng padding để chừa chỗ cho line
+  padding: 0 0 0 20px;
 }
 
 .subNavInner::before {
@@ -166,11 +166,12 @@
 }
 
 .subNavItem {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
   min-height: 40px;
-  padding: 0 12px;
+  padding: 0 12px 0 16px;
   border: 1px solid transparent;
   border-radius: 12px;
   text-decoration: none;
@@ -187,7 +188,7 @@
 .subNavItem::before {
   content: "";
   position: absolute;
-  left: -10px;
+  left: -13px;
   top: 50%;
   transform: translateY(-50%);
   width: 6px;
