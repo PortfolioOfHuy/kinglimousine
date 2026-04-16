@@ -5,10 +5,15 @@ import path from "node:path";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
+const WHY_CHOOSE_US_SECTION_SLUG = "vi-sao-chon-chung-toi";
+const WHY_CHOOSE_US_SECTION_TYPE = "why-choose-us-section";
+
 function toSlug(value: string) {
   return value
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9\s-]/g, "")
@@ -51,13 +56,15 @@ async function saveUploadedImage(file: File | null) {
 }
 
 export async function saveWhyChooseUsSection(formData: FormData) {
-  const summary = String(formData.get("summary") || "").trim() || null;
+  const summary = String(formData.get("summary") ?? "").trim() || null;
   const imageFile = formData.get("featuredImage") as File | null;
 
   const existing = await prisma.staticPage.findFirst({
     where: {
-      slug: "vi-sao-chon-chung-toi",
-      type: "why-choose-us-section",
+      OR: [
+        { slug: WHY_CHOOSE_US_SECTION_SLUG },
+        { type: WHY_CHOOSE_US_SECTION_TYPE },
+      ],
     },
     select: {
       id: true,
@@ -77,8 +84,8 @@ export async function saveWhyChooseUsSection(formData: FormData) {
       where: { id: existing.id },
       data: {
         title: "Vì sao chọn chúng tôi",
-        slug: "vi-sao-chon-chung-toi",
-        type: "why-choose-us-section",
+        slug: WHY_CHOOSE_US_SECTION_SLUG,
+        type: WHY_CHOOSE_US_SECTION_TYPE,
         summary,
         featuredImageId,
         status: "PUBLISHED",
@@ -90,8 +97,8 @@ export async function saveWhyChooseUsSection(formData: FormData) {
     await prisma.staticPage.create({
       data: {
         title: "Vì sao chọn chúng tôi",
-        slug: "vi-sao-chon-chung-toi",
-        type: "why-choose-us-section",
+        slug: WHY_CHOOSE_US_SECTION_SLUG,
+        type: WHY_CHOOSE_US_SECTION_TYPE,
         summary,
         featuredImageId,
         status: "PUBLISHED",

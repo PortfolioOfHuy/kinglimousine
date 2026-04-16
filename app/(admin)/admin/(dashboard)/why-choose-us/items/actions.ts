@@ -4,10 +4,15 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
+const WHY_CHOOSE_US_ITEM_TYPE = "why-choose-us-item";
+const WHY_CHOOSE_US_ITEM_SLUG_PREFIX = "vi-sao-chon-item-";
+
 function toSlug(value: string) {
   return value
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9\s-]/g, "")
@@ -15,21 +20,51 @@ function toSlug(value: string) {
     .replace(/-+/g, "-");
 }
 
-export async function createWhyChooseUsItem(formData: FormData) {
-  const title = String(formData.get("title") || "").trim();
-  const summary = String(formData.get("summary") || "").trim() || null;
-  const content = String(formData.get("content") || "").trim() || null;
-
-  if (!title) {
-    throw new Error("Tiêu đề là bắt buộc.");
+function buildItemSlug(title: string) {
+  const base = toSlug(title);
+  if (!base) {
+    throw new Error("Tiêu đề không hợp lệ.");
   }
 
-  const slug = `vi-sao-chon-item-${toSlug(title)}`;
+  return `${WHY_CHOOSE_US_ITEM_SLUG_PREFIX}${base}`;
+}
 
+function isWhyChooseUsItem(record: { type: string | null; slug: string }) {
+  return (
+    record.type === WHY_CHOOSE_US_ITEM_TYPE ||
+    record.slug.startsWith(WHY_CHOOSE_US_ITEM_SLUG_PREFIX)
+  );
+}
+
+async function getWhyChooseUsItemOrThrow(id: number) {
+  if (!Number.isInteger(id)) {
+    throw new Error("ID không hợp lệ.");
+  }
+
+  const current = await prisma.staticPage.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      slug: true,
+      type: true,
+      showInMenu: true,
+      status: true,
+      publishedAt: true,
+    },
+  });
+
+  if (!current || !isWhyChooseUsItem(current)) {
+    throw new Error("Item không tồn tại.");
+  }
+
+  return current;
+}
+
+async function ensureUniqueItemSlug(slug: string, ignoreId?: number) {
   const existed = await prisma.staticPage.findFirst({
     where: {
       slug,
-      type: "why-choose-us-item",
+      ...(ignoreId ? { NOT: { id: ignoreId } } : {}),
     },
     select: { id: true },
   });
@@ -37,6 +72,29 @@ export async function createWhyChooseUsItem(formData: FormData) {
   if (existed) {
     throw new Error("Tiêu đề đã tồn tại.");
   }
+}
+
+function revalidateWhyChooseUsPaths(id?: number) {
+  revalidatePath("/admin/why-choose-us/items");
+  revalidatePath("/");
+
+  if (id) {
+    revalidatePath(`/admin/why-choose-us/items/${id}/edit`);
+  }
+}
+
+export async function createWhyChooseUsItem(formData: FormData) {
+  const title = String(formData.get("title") ?? "").trim();
+  const summary = String(formData.get("summary") ?? "").trim() || null;
+  const content = String(formData.get("content") ?? "").trim() || null;
+
+  if (!title) {
+    throw new Error("Tiêu đề là bắt buộc.");
+  }
+
+  const slug = buildItemSlug(title);
+
+  await ensureUniqueItemSlug(slug);
 
   await prisma.staticPage.create({
     data: {
@@ -44,7 +102,7 @@ export async function createWhyChooseUsItem(formData: FormData) {
       slug,
       summary,
       content,
-      type: "why-choose-us-item",
+      type: WHY_CHOOSE_US_ITEM_TYPE,
       status: "PUBLISHED",
       publishedAt: new Date(),
       showInMenu: false,
@@ -52,43 +110,24 @@ export async function createWhyChooseUsItem(formData: FormData) {
     },
   });
 
-  revalidatePath("/admin/why-choose-us/items");
-  revalidatePath("/");
+  revalidateWhyChooseUsPaths();
   redirect("/admin/why-choose-us/items");
 }
 
 export async function updateWhyChooseUsItem(id: number, formData: FormData) {
-  const title = String(formData.get("title") || "").trim();
-  const summary = String(formData.get("summary") || "").trim() || null;
-  const content = String(formData.get("content") || "").trim() || null;
+  const title = String(formData.get("title") ?? "").trim();
+  const summary = String(formData.get("summary") ?? "").trim() || null;
+  const content = String(formData.get("content") ?? "").trim() || null;
 
   if (!title) {
     throw new Error("Tiêu đề là bắt buộc.");
   }
 
-  const current = await prisma.staticPage.findUnique({
-    where: { id },
-    select: { id: true, type: true },
-  });
+  await getWhyChooseUsItemOrThrow(id);
 
-  if (!current || current.type !== "why-choose-us-item") {
-    throw new Error("Item không tồn tại.");
-  }
+  const slug = buildItemSlug(title);
 
-  const slug = `vi-sao-chon-item-${toSlug(title)}`;
-
-  const existed = await prisma.staticPage.findFirst({
-    where: {
-      slug,
-      type: "why-choose-us-item",
-      NOT: { id },
-    },
-    select: { id: true },
-  });
-
-  if (existed) {
-    throw new Error("Tiêu đề đã tồn tại.");
-  }
+  await ensureUniqueItemSlug(slug, id);
 
   await prisma.staticPage.update({
     where: { id },
@@ -97,93 +136,56 @@ export async function updateWhyChooseUsItem(id: number, formData: FormData) {
       slug,
       summary,
       content,
-      type: "why-choose-us-item",
+      type: WHY_CHOOSE_US_ITEM_TYPE,
     },
   });
 
-  revalidatePath("/admin/why-choose-us/items");
-  revalidatePath(`/admin/why-choose-us/items/${id}/edit`);
-  revalidatePath("/");
+  revalidateWhyChooseUsPaths(id);
   redirect("/admin/why-choose-us/items");
 }
 
 export async function deleteWhyChooseUsItem(formData: FormData) {
   const id = Number(formData.get("id"));
 
-  if (!Number.isInteger(id)) {
-    throw new Error("ID không hợp lệ.");
-  }
-
-  const current = await prisma.staticPage.findUnique({
-    where: { id },
-    select: { id: true, type: true },
-  });
-
-  if (!current || current.type !== "why-choose-us-item") {
-    throw new Error("Item không tồn tại.");
-  }
+  await getWhyChooseUsItemOrThrow(id);
 
   await prisma.staticPage.delete({
     where: { id },
   });
 
-  revalidatePath("/admin/why-choose-us/items");
-  revalidatePath("/");
+  revalidateWhyChooseUsPaths();
 }
 
 export async function toggleWhyChooseUsItemFeatured(formData: FormData) {
   const id = Number(formData.get("id"));
-  const currentValue = String(formData.get("currentValue")) === "true";
 
-  if (!Number.isInteger(id)) {
-    throw new Error("ID không hợp lệ.");
-  }
-
-  const current = await prisma.staticPage.findUnique({
-    where: { id },
-    select: { id: true, type: true },
-  });
-
-  if (!current || current.type !== "why-choose-us-item") {
-    throw new Error("Item không tồn tại.");
-  }
+  const current = await getWhyChooseUsItemOrThrow(id);
 
   await prisma.staticPage.update({
     where: { id },
     data: {
-      showInMenu: !currentValue,
+      showInMenu: !current.showInMenu,
+      type: WHY_CHOOSE_US_ITEM_TYPE,
     },
   });
 
-  revalidatePath("/admin/why-choose-us/items");
-  revalidatePath("/");
+  revalidateWhyChooseUsPaths();
 }
 
 export async function toggleWhyChooseUsItemVisible(formData: FormData) {
   const id = Number(formData.get("id"));
-  const currentValue = String(formData.get("currentValue")) === "true";
 
-  if (!Number.isInteger(id)) {
-    throw new Error("ID không hợp lệ.");
-  }
-
-  const current = await prisma.staticPage.findUnique({
-    where: { id },
-    select: { publishedAt: true, type: true },
-  });
-
-  if (!current || current.type !== "why-choose-us-item") {
-    throw new Error("Item không tồn tại.");
-  }
+  const current = await getWhyChooseUsItemOrThrow(id);
+  const nextVisible = current.status !== "PUBLISHED";
 
   await prisma.staticPage.update({
     where: { id },
     data: {
-      status: currentValue ? "DRAFT" : "PUBLISHED",
-      publishedAt: currentValue ? null : (current.publishedAt ?? new Date()),
+      status: nextVisible ? "PUBLISHED" : "DRAFT",
+      publishedAt: nextVisible ? (current.publishedAt ?? new Date()) : null,
+      type: WHY_CHOOSE_US_ITEM_TYPE,
     },
   });
 
-  revalidatePath("/admin/why-choose-us/items");
-  revalidatePath("/");
+  revalidateWhyChooseUsPaths();
 }
