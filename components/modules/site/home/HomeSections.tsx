@@ -10,6 +10,7 @@ type Props = {
   fleet: ReactNode;
   howToBook: ReactNode;
   whyChooseUs: ReactNode;
+  news: ReactNode;
 };
 
 export default function HomeSections({
@@ -18,6 +19,7 @@ export default function HomeSections({
   fleet,
   howToBook,
   whyChooseUs,
+  news,
 }: Props) {
   return (
     <>
@@ -33,6 +35,7 @@ export default function HomeSections({
       <Reveal delay={0.12}>{fleet}</Reveal>
       <Reveal delay={0.16}>{howToBook}</Reveal>
       <Reveal delay={0.2}>{whyChooseUs}</Reveal>
+      <Reveal delay={0.24}>{news}</Reveal>
     </>
   );
 }
