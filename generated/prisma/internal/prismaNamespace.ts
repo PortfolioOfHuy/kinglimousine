@@ -1788,6 +1788,12 @@ export const WebsiteSettingScalarFieldEnum = {
   headerScripts: 'headerScripts',
   bodyScripts: 'bodyScripts',
   footerScripts: 'footerScripts',
+  ctaTitle: 'ctaTitle',
+  ctaDescription: 'ctaDescription',
+  ctaButtonText: 'ctaButtonText',
+  ctaButtonLink: 'ctaButtonLink',
+  ctaBackgroundImageId: 'ctaBackgroundImageId',
+  ctaIsActive: 'ctaIsActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

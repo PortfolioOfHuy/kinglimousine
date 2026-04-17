@@ -277,6 +277,7 @@ export type MediaWhereInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingListRelationFilter
   websiteSettingFavicons?: Prisma.WebsiteSettingListRelationFilter
   websiteSettingOgImages?: Prisma.WebsiteSettingListRelationFilter
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingListRelationFilter
   seoOgImages?: Prisma.SeoPageListRelationFilter
   seoTwitterImages?: Prisma.SeoPageListRelationFilter
   staticPageFeaturedImages?: Prisma.StaticPageListRelationFilter
@@ -309,6 +310,7 @@ export type MediaOrderByWithRelationInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingOrderByRelationAggregateInput
   websiteSettingFavicons?: Prisma.WebsiteSettingOrderByRelationAggregateInput
   websiteSettingOgImages?: Prisma.WebsiteSettingOrderByRelationAggregateInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingOrderByRelationAggregateInput
   seoOgImages?: Prisma.SeoPageOrderByRelationAggregateInput
   seoTwitterImages?: Prisma.SeoPageOrderByRelationAggregateInput
   staticPageFeaturedImages?: Prisma.StaticPageOrderByRelationAggregateInput
@@ -344,6 +346,7 @@ export type MediaWhereUniqueInput = Prisma.AtLeast<{
   websiteSettingFooterLogos?: Prisma.WebsiteSettingListRelationFilter
   websiteSettingFavicons?: Prisma.WebsiteSettingListRelationFilter
   websiteSettingOgImages?: Prisma.WebsiteSettingListRelationFilter
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingListRelationFilter
   seoOgImages?: Prisma.SeoPageListRelationFilter
   seoTwitterImages?: Prisma.SeoPageListRelationFilter
   staticPageFeaturedImages?: Prisma.StaticPageListRelationFilter
@@ -410,6 +413,7 @@ export type MediaCreateInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -441,6 +445,7 @@ export type MediaUncheckedCreateInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -471,6 +476,7 @@ export type MediaUpdateInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -502,6 +508,7 @@ export type MediaUncheckedUpdateInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -723,6 +730,12 @@ export type MediaCreateNestedOneWithoutWebsiteSettingOgImagesInput = {
   connect?: Prisma.MediaWhereUniqueInput
 }
 
+export type MediaCreateNestedOneWithoutWebsiteSettingCtaBackgroundsInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUncheckedCreateWithoutWebsiteSettingCtaBackgroundsInput>
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutWebsiteSettingCtaBackgroundsInput
+  connect?: Prisma.MediaWhereUniqueInput
+}
+
 export type MediaUpdateOneWithoutWebsiteSettingLogosNestedInput = {
   create?: Prisma.XOR<Prisma.MediaCreateWithoutWebsiteSettingLogosInput, Prisma.MediaUncheckedCreateWithoutWebsiteSettingLogosInput>
   connectOrCreate?: Prisma.MediaCreateOrConnectWithoutWebsiteSettingLogosInput
@@ -761,6 +774,16 @@ export type MediaUpdateOneWithoutWebsiteSettingOgImagesNestedInput = {
   delete?: Prisma.MediaWhereInput | boolean
   connect?: Prisma.MediaWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutWebsiteSettingOgImagesInput, Prisma.MediaUpdateWithoutWebsiteSettingOgImagesInput>, Prisma.MediaUncheckedUpdateWithoutWebsiteSettingOgImagesInput>
+}
+
+export type MediaUpdateOneWithoutWebsiteSettingCtaBackgroundsNestedInput = {
+  create?: Prisma.XOR<Prisma.MediaCreateWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUncheckedCreateWithoutWebsiteSettingCtaBackgroundsInput>
+  connectOrCreate?: Prisma.MediaCreateOrConnectWithoutWebsiteSettingCtaBackgroundsInput
+  upsert?: Prisma.MediaUpsertWithoutWebsiteSettingCtaBackgroundsInput
+  disconnect?: Prisma.MediaWhereInput | boolean
+  delete?: Prisma.MediaWhereInput | boolean
+  connect?: Prisma.MediaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MediaUpdateToOneWithWhereWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUpdateWithoutWebsiteSettingCtaBackgroundsInput>, Prisma.MediaUncheckedUpdateWithoutWebsiteSettingCtaBackgroundsInput>
 }
 
 export type MediaCreateNestedOneWithoutSeoOgImagesInput = {
@@ -969,6 +992,7 @@ export type MediaCreateWithoutUploaderInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -999,6 +1023,7 @@ export type MediaUncheckedCreateWithoutUploaderInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -1072,6 +1097,7 @@ export type MediaCreateWithoutSlideshowsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -1102,6 +1128,7 @@ export type MediaUncheckedCreateWithoutSlideshowsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -1147,6 +1174,7 @@ export type MediaUpdateWithoutSlideshowsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -1177,6 +1205,7 @@ export type MediaUncheckedUpdateWithoutSlideshowsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -1205,6 +1234,7 @@ export type MediaCreateWithoutWebsiteSettingLogosInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -1235,6 +1265,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingLogosInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -1269,6 +1300,7 @@ export type MediaCreateWithoutWebsiteSettingFooterLogosInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -1299,6 +1331,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingFooterLogosInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -1333,6 +1366,7 @@ export type MediaCreateWithoutWebsiteSettingFaviconsInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutLogoInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -1363,6 +1397,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingFaviconsInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutLogoInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -1397,6 +1432,7 @@ export type MediaCreateWithoutWebsiteSettingOgImagesInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutLogoInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -1427,6 +1463,7 @@ export type MediaUncheckedCreateWithoutWebsiteSettingOgImagesInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutLogoInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -1445,6 +1482,72 @@ export type MediaUncheckedCreateWithoutWebsiteSettingOgImagesInput = {
 export type MediaCreateOrConnectWithoutWebsiteSettingOgImagesInput = {
   where: Prisma.MediaWhereUniqueInput
   create: Prisma.XOR<Prisma.MediaCreateWithoutWebsiteSettingOgImagesInput, Prisma.MediaUncheckedCreateWithoutWebsiteSettingOgImagesInput>
+}
+
+export type MediaCreateWithoutWebsiteSettingCtaBackgroundsInput = {
+  fileName: string
+  filePath: string
+  fileType?: string | null
+  mimeType?: string | null
+  fileSize?: number | null
+  title?: string | null
+  altText?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  uploader?: Prisma.UserCreateNestedOneWithoutUploadedMediaInput
+  websiteSettingLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutLogoInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
+  seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
+  staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
+  staticPageBannerImages?: Prisma.StaticPageCreateNestedManyWithoutBannerImageInput
+  productCategoryImages?: Prisma.ProductCategoryCreateNestedManyWithoutImageInput
+  productCategoryBanners?: Prisma.ProductCategoryCreateNestedManyWithoutBannerImageInput
+  productThumbnails?: Prisma.ProductCreateNestedManyWithoutThumbnailInput
+  productBanners?: Prisma.ProductCreateNestedManyWithoutBannerImageInput
+  blogThumbnails?: Prisma.BlogCreateNestedManyWithoutThumbnailInput
+  blogBanners?: Prisma.BlogCreateNestedManyWithoutBannerImageInput
+  newsThumbnails?: Prisma.NewsCreateNestedManyWithoutThumbnailInput
+  newsBanners?: Prisma.NewsCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowCreateNestedManyWithoutImageInput
+}
+
+export type MediaUncheckedCreateWithoutWebsiteSettingCtaBackgroundsInput = {
+  id?: number
+  fileName: string
+  filePath: string
+  fileType?: string | null
+  mimeType?: string | null
+  fileSize?: number | null
+  title?: string | null
+  altText?: string | null
+  uploadedBy?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  websiteSettingLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutLogoInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
+  seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
+  staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
+  staticPageBannerImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutBannerImageInput
+  productCategoryImages?: Prisma.ProductCategoryUncheckedCreateNestedManyWithoutImageInput
+  productCategoryBanners?: Prisma.ProductCategoryUncheckedCreateNestedManyWithoutBannerImageInput
+  productThumbnails?: Prisma.ProductUncheckedCreateNestedManyWithoutThumbnailInput
+  productBanners?: Prisma.ProductUncheckedCreateNestedManyWithoutBannerImageInput
+  blogThumbnails?: Prisma.BlogUncheckedCreateNestedManyWithoutThumbnailInput
+  blogBanners?: Prisma.BlogUncheckedCreateNestedManyWithoutBannerImageInput
+  newsThumbnails?: Prisma.NewsUncheckedCreateNestedManyWithoutThumbnailInput
+  newsBanners?: Prisma.NewsUncheckedCreateNestedManyWithoutBannerImageInput
+  slideshows?: Prisma.SlideshowUncheckedCreateNestedManyWithoutImageInput
+}
+
+export type MediaCreateOrConnectWithoutWebsiteSettingCtaBackgroundsInput = {
+  where: Prisma.MediaWhereUniqueInput
+  create: Prisma.XOR<Prisma.MediaCreateWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUncheckedCreateWithoutWebsiteSettingCtaBackgroundsInput>
 }
 
 export type MediaUpsertWithoutWebsiteSettingLogosInput = {
@@ -1472,6 +1575,7 @@ export type MediaUpdateWithoutWebsiteSettingLogosInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -1502,6 +1606,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingLogosInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -1542,6 +1647,7 @@ export type MediaUpdateWithoutWebsiteSettingFooterLogosInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUpdateManyWithoutLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -1572,6 +1678,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingFooterLogosInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -1612,6 +1719,7 @@ export type MediaUpdateWithoutWebsiteSettingFaviconsInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUpdateManyWithoutLogoNestedInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -1642,6 +1750,7 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingFaviconsInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutLogoNestedInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -1682,6 +1791,7 @@ export type MediaUpdateWithoutWebsiteSettingOgImagesInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUpdateManyWithoutLogoNestedInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -1712,6 +1822,79 @@ export type MediaUncheckedUpdateWithoutWebsiteSettingOgImagesInput = {
   websiteSettingLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutLogoNestedInput
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
+  seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
+  seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
+  staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
+  staticPageBannerImages?: Prisma.StaticPageUncheckedUpdateManyWithoutBannerImageNestedInput
+  productCategoryImages?: Prisma.ProductCategoryUncheckedUpdateManyWithoutImageNestedInput
+  productCategoryBanners?: Prisma.ProductCategoryUncheckedUpdateManyWithoutBannerImageNestedInput
+  productThumbnails?: Prisma.ProductUncheckedUpdateManyWithoutThumbnailNestedInput
+  productBanners?: Prisma.ProductUncheckedUpdateManyWithoutBannerImageNestedInput
+  blogThumbnails?: Prisma.BlogUncheckedUpdateManyWithoutThumbnailNestedInput
+  blogBanners?: Prisma.BlogUncheckedUpdateManyWithoutBannerImageNestedInput
+  newsThumbnails?: Prisma.NewsUncheckedUpdateManyWithoutThumbnailNestedInput
+  newsBanners?: Prisma.NewsUncheckedUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUncheckedUpdateManyWithoutImageNestedInput
+}
+
+export type MediaUpsertWithoutWebsiteSettingCtaBackgroundsInput = {
+  update: Prisma.XOR<Prisma.MediaUpdateWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUncheckedUpdateWithoutWebsiteSettingCtaBackgroundsInput>
+  create: Prisma.XOR<Prisma.MediaCreateWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUncheckedCreateWithoutWebsiteSettingCtaBackgroundsInput>
+  where?: Prisma.MediaWhereInput
+}
+
+export type MediaUpdateToOneWithWhereWithoutWebsiteSettingCtaBackgroundsInput = {
+  where?: Prisma.MediaWhereInput
+  data: Prisma.XOR<Prisma.MediaUpdateWithoutWebsiteSettingCtaBackgroundsInput, Prisma.MediaUncheckedUpdateWithoutWebsiteSettingCtaBackgroundsInput>
+}
+
+export type MediaUpdateWithoutWebsiteSettingCtaBackgroundsInput = {
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  filePath?: Prisma.StringFieldUpdateOperationsInput | string
+  fileType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  uploader?: Prisma.UserUpdateOneWithoutUploadedMediaNestedInput
+  websiteSettingLogos?: Prisma.WebsiteSettingUpdateManyWithoutLogoNestedInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
+  seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
+  staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
+  staticPageBannerImages?: Prisma.StaticPageUpdateManyWithoutBannerImageNestedInput
+  productCategoryImages?: Prisma.ProductCategoryUpdateManyWithoutImageNestedInput
+  productCategoryBanners?: Prisma.ProductCategoryUpdateManyWithoutBannerImageNestedInput
+  productThumbnails?: Prisma.ProductUpdateManyWithoutThumbnailNestedInput
+  productBanners?: Prisma.ProductUpdateManyWithoutBannerImageNestedInput
+  blogThumbnails?: Prisma.BlogUpdateManyWithoutThumbnailNestedInput
+  blogBanners?: Prisma.BlogUpdateManyWithoutBannerImageNestedInput
+  newsThumbnails?: Prisma.NewsUpdateManyWithoutThumbnailNestedInput
+  newsBanners?: Prisma.NewsUpdateManyWithoutBannerImageNestedInput
+  slideshows?: Prisma.SlideshowUpdateManyWithoutImageNestedInput
+}
+
+export type MediaUncheckedUpdateWithoutWebsiteSettingCtaBackgroundsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  filePath?: Prisma.StringFieldUpdateOperationsInput | string
+  fileType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mimeType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  altText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  uploadedBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  websiteSettingLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutLogoNestedInput
+  websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
+  websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
+  websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -1742,6 +1925,7 @@ export type MediaCreateWithoutSeoOgImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
   staticPageBannerImages?: Prisma.StaticPageCreateNestedManyWithoutBannerImageInput
@@ -1772,6 +1956,7 @@ export type MediaUncheckedCreateWithoutSeoOgImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
   staticPageBannerImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutBannerImageInput
@@ -1806,6 +1991,7 @@ export type MediaCreateWithoutSeoTwitterImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
   staticPageBannerImages?: Prisma.StaticPageCreateNestedManyWithoutBannerImageInput
@@ -1836,6 +2022,7 @@ export type MediaUncheckedCreateWithoutSeoTwitterImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
   staticPageBannerImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutBannerImageInput
@@ -1881,6 +2068,7 @@ export type MediaUpdateWithoutSeoOgImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
   staticPageBannerImages?: Prisma.StaticPageUpdateManyWithoutBannerImageNestedInput
@@ -1911,6 +2099,7 @@ export type MediaUncheckedUpdateWithoutSeoOgImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
   staticPageBannerImages?: Prisma.StaticPageUncheckedUpdateManyWithoutBannerImageNestedInput
@@ -1951,6 +2140,7 @@ export type MediaUpdateWithoutSeoTwitterImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
   staticPageBannerImages?: Prisma.StaticPageUpdateManyWithoutBannerImageNestedInput
@@ -1981,6 +2171,7 @@ export type MediaUncheckedUpdateWithoutSeoTwitterImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
   staticPageBannerImages?: Prisma.StaticPageUncheckedUpdateManyWithoutBannerImageNestedInput
@@ -2010,6 +2201,7 @@ export type MediaCreateWithoutStaticPageFeaturedImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageBannerImages?: Prisma.StaticPageCreateNestedManyWithoutBannerImageInput
@@ -2040,6 +2232,7 @@ export type MediaUncheckedCreateWithoutStaticPageFeaturedImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageBannerImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutBannerImageInput
@@ -2074,6 +2267,7 @@ export type MediaCreateWithoutStaticPageBannerImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2104,6 +2298,7 @@ export type MediaUncheckedCreateWithoutStaticPageBannerImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2149,6 +2344,7 @@ export type MediaUpdateWithoutStaticPageFeaturedImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageBannerImages?: Prisma.StaticPageUpdateManyWithoutBannerImageNestedInput
@@ -2179,6 +2375,7 @@ export type MediaUncheckedUpdateWithoutStaticPageFeaturedImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageBannerImages?: Prisma.StaticPageUncheckedUpdateManyWithoutBannerImageNestedInput
@@ -2219,6 +2416,7 @@ export type MediaUpdateWithoutStaticPageBannerImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -2249,6 +2447,7 @@ export type MediaUncheckedUpdateWithoutStaticPageBannerImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -2278,6 +2477,7 @@ export type MediaCreateWithoutProductCategoryImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2308,6 +2508,7 @@ export type MediaUncheckedCreateWithoutProductCategoryImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2342,6 +2543,7 @@ export type MediaCreateWithoutProductCategoryBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2372,6 +2574,7 @@ export type MediaUncheckedCreateWithoutProductCategoryBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2417,6 +2620,7 @@ export type MediaUpdateWithoutProductCategoryImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -2447,6 +2651,7 @@ export type MediaUncheckedUpdateWithoutProductCategoryImagesInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -2487,6 +2692,7 @@ export type MediaUpdateWithoutProductCategoryBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -2517,6 +2723,7 @@ export type MediaUncheckedUpdateWithoutProductCategoryBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -2546,6 +2753,7 @@ export type MediaCreateWithoutProductThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2576,6 +2784,7 @@ export type MediaUncheckedCreateWithoutProductThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2610,6 +2819,7 @@ export type MediaCreateWithoutProductBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2640,6 +2850,7 @@ export type MediaUncheckedCreateWithoutProductBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2685,6 +2896,7 @@ export type MediaUpdateWithoutProductThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -2715,6 +2927,7 @@ export type MediaUncheckedUpdateWithoutProductThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -2755,6 +2968,7 @@ export type MediaUpdateWithoutProductBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -2785,6 +2999,7 @@ export type MediaUncheckedUpdateWithoutProductBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -2814,6 +3029,7 @@ export type MediaCreateWithoutBlogThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2844,6 +3060,7 @@ export type MediaUncheckedCreateWithoutBlogThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2878,6 +3095,7 @@ export type MediaCreateWithoutBlogBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -2908,6 +3126,7 @@ export type MediaUncheckedCreateWithoutBlogBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -2953,6 +3172,7 @@ export type MediaUpdateWithoutBlogThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -2983,6 +3203,7 @@ export type MediaUncheckedUpdateWithoutBlogThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -3023,6 +3244,7 @@ export type MediaUpdateWithoutBlogBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -3053,6 +3275,7 @@ export type MediaUncheckedUpdateWithoutBlogBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -3082,6 +3305,7 @@ export type MediaCreateWithoutNewsThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -3112,6 +3336,7 @@ export type MediaUncheckedCreateWithoutNewsThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -3146,6 +3371,7 @@ export type MediaCreateWithoutNewsBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageCreateNestedManyWithoutFeaturedImageInput
@@ -3176,6 +3402,7 @@ export type MediaUncheckedCreateWithoutNewsBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFooterLogoInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutFaviconInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput
   seoOgImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutOgImageInput
   seoTwitterImages?: Prisma.SeoPageUncheckedCreateNestedManyWithoutTwitterImageInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedCreateNestedManyWithoutFeaturedImageInput
@@ -3221,6 +3448,7 @@ export type MediaUpdateWithoutNewsThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -3251,6 +3479,7 @@ export type MediaUncheckedUpdateWithoutNewsThumbnailsInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -3291,6 +3520,7 @@ export type MediaUpdateWithoutNewsBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -3321,6 +3551,7 @@ export type MediaUncheckedUpdateWithoutNewsBannersInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -3362,6 +3593,7 @@ export type MediaUpdateWithoutUploaderInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUpdateManyWithoutFeaturedImageNestedInput
@@ -3392,6 +3624,7 @@ export type MediaUncheckedUpdateWithoutUploaderInput = {
   websiteSettingFooterLogos?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFooterLogoNestedInput
   websiteSettingFavicons?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutFaviconNestedInput
   websiteSettingOgImages?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput
+  websiteSettingCtaBackgrounds?: Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput
   seoOgImages?: Prisma.SeoPageUncheckedUpdateManyWithoutOgImageNestedInput
   seoTwitterImages?: Prisma.SeoPageUncheckedUpdateManyWithoutTwitterImageNestedInput
   staticPageFeaturedImages?: Prisma.StaticPageUncheckedUpdateManyWithoutFeaturedImageNestedInput
@@ -3430,6 +3663,7 @@ export type MediaCountOutputType = {
   websiteSettingFooterLogos: number
   websiteSettingFavicons: number
   websiteSettingOgImages: number
+  websiteSettingCtaBackgrounds: number
   seoOgImages: number
   seoTwitterImages: number
   staticPageFeaturedImages: number
@@ -3450,6 +3684,7 @@ export type MediaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.
   websiteSettingFooterLogos?: boolean | MediaCountOutputTypeCountWebsiteSettingFooterLogosArgs
   websiteSettingFavicons?: boolean | MediaCountOutputTypeCountWebsiteSettingFaviconsArgs
   websiteSettingOgImages?: boolean | MediaCountOutputTypeCountWebsiteSettingOgImagesArgs
+  websiteSettingCtaBackgrounds?: boolean | MediaCountOutputTypeCountWebsiteSettingCtaBackgroundsArgs
   seoOgImages?: boolean | MediaCountOutputTypeCountSeoOgImagesArgs
   seoTwitterImages?: boolean | MediaCountOutputTypeCountSeoTwitterImagesArgs
   staticPageFeaturedImages?: boolean | MediaCountOutputTypeCountStaticPageFeaturedImagesArgs
@@ -3500,6 +3735,13 @@ export type MediaCountOutputTypeCountWebsiteSettingFaviconsArgs<ExtArgs extends 
  * MediaCountOutputType without action
  */
 export type MediaCountOutputTypeCountWebsiteSettingOgImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WebsiteSettingWhereInput
+}
+
+/**
+ * MediaCountOutputType without action
+ */
+export type MediaCountOutputTypeCountWebsiteSettingCtaBackgroundsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.WebsiteSettingWhereInput
 }
 
@@ -3612,6 +3854,7 @@ export type MediaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   websiteSettingFooterLogos?: boolean | Prisma.Media$websiteSettingFooterLogosArgs<ExtArgs>
   websiteSettingFavicons?: boolean | Prisma.Media$websiteSettingFaviconsArgs<ExtArgs>
   websiteSettingOgImages?: boolean | Prisma.Media$websiteSettingOgImagesArgs<ExtArgs>
+  websiteSettingCtaBackgrounds?: boolean | Prisma.Media$websiteSettingCtaBackgroundsArgs<ExtArgs>
   seoOgImages?: boolean | Prisma.Media$seoOgImagesArgs<ExtArgs>
   seoTwitterImages?: boolean | Prisma.Media$seoTwitterImagesArgs<ExtArgs>
   staticPageFeaturedImages?: boolean | Prisma.Media$staticPageFeaturedImagesArgs<ExtArgs>
@@ -3679,6 +3922,7 @@ export type MediaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   websiteSettingFooterLogos?: boolean | Prisma.Media$websiteSettingFooterLogosArgs<ExtArgs>
   websiteSettingFavicons?: boolean | Prisma.Media$websiteSettingFaviconsArgs<ExtArgs>
   websiteSettingOgImages?: boolean | Prisma.Media$websiteSettingOgImagesArgs<ExtArgs>
+  websiteSettingCtaBackgrounds?: boolean | Prisma.Media$websiteSettingCtaBackgroundsArgs<ExtArgs>
   seoOgImages?: boolean | Prisma.Media$seoOgImagesArgs<ExtArgs>
   seoTwitterImages?: boolean | Prisma.Media$seoTwitterImagesArgs<ExtArgs>
   staticPageFeaturedImages?: boolean | Prisma.Media$staticPageFeaturedImagesArgs<ExtArgs>
@@ -3709,6 +3953,7 @@ export type $MediaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     websiteSettingFooterLogos: Prisma.$WebsiteSettingPayload<ExtArgs>[]
     websiteSettingFavicons: Prisma.$WebsiteSettingPayload<ExtArgs>[]
     websiteSettingOgImages: Prisma.$WebsiteSettingPayload<ExtArgs>[]
+    websiteSettingCtaBackgrounds: Prisma.$WebsiteSettingPayload<ExtArgs>[]
     seoOgImages: Prisma.$SeoPagePayload<ExtArgs>[]
     seoTwitterImages: Prisma.$SeoPagePayload<ExtArgs>[]
     staticPageFeaturedImages: Prisma.$StaticPagePayload<ExtArgs>[]
@@ -4134,6 +4379,7 @@ export interface Prisma__MediaClient<T, Null = never, ExtArgs extends runtime.Ty
   websiteSettingFooterLogos<T extends Prisma.Media$websiteSettingFooterLogosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$websiteSettingFooterLogosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WebsiteSettingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   websiteSettingFavicons<T extends Prisma.Media$websiteSettingFaviconsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$websiteSettingFaviconsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WebsiteSettingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   websiteSettingOgImages<T extends Prisma.Media$websiteSettingOgImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$websiteSettingOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WebsiteSettingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  websiteSettingCtaBackgrounds<T extends Prisma.Media$websiteSettingCtaBackgroundsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$websiteSettingCtaBackgroundsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WebsiteSettingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   seoOgImages<T extends Prisma.Media$seoOgImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$seoOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SeoPagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   seoTwitterImages<T extends Prisma.Media$seoTwitterImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$seoTwitterImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SeoPagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   staticPageFeaturedImages<T extends Prisma.Media$staticPageFeaturedImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Media$staticPageFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StaticPagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4682,6 +4928,30 @@ export type Media$websiteSettingFaviconsArgs<ExtArgs extends runtime.Types.Exten
  * Media.websiteSettingOgImages
  */
 export type Media$websiteSettingOgImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WebsiteSetting
+   */
+  select?: Prisma.WebsiteSettingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WebsiteSetting
+   */
+  omit?: Prisma.WebsiteSettingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WebsiteSettingInclude<ExtArgs> | null
+  where?: Prisma.WebsiteSettingWhereInput
+  orderBy?: Prisma.WebsiteSettingOrderByWithRelationInput | Prisma.WebsiteSettingOrderByWithRelationInput[]
+  cursor?: Prisma.WebsiteSettingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WebsiteSettingScalarFieldEnum | Prisma.WebsiteSettingScalarFieldEnum[]
+}
+
+/**
+ * Media.websiteSettingCtaBackgrounds
+ */
+export type Media$websiteSettingCtaBackgroundsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the WebsiteSetting
    */

@@ -93,6 +93,7 @@ model Media {
   websiteSettingFooterLogos WebsiteSetting[] @relation("WebsiteSettingFooterLogo")
   websiteSettingFavicons    WebsiteSetting[] @relation("WebsiteSettingFavicon")
   websiteSettingOgImages    WebsiteSetting[] @relation("WebsiteSettingOgImage")
+  websiteSettingCtaBackgrounds WebsiteSetting[] @relation("WebsiteSettingCtaBackground")
 
   seoOgImages      SeoPage[] @relation("SeoPageOgImage")
   seoTwitterImages SeoPage[] @relation("SeoPageTwitterImage")
@@ -158,6 +159,12 @@ model WebsiteSetting {
   headerScripts   String?
   bodyScripts     String?
   footerScripts   String?
+  ctaTitle            String?
+  ctaDescription      String?
+  ctaButtonText       String?
+  ctaButtonLink       String?
+  ctaBackgroundImageId Int?
+  ctaIsActive         Boolean  @default(true)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -165,6 +172,7 @@ model WebsiteSetting {
   footerLogo Media? @relation("WebsiteSettingFooterLogo", fields: [footerLogoId], references: [id], onDelete: SetNull)
   favicon    Media? @relation("WebsiteSettingFavicon", fields: [faviconId], references: [id], onDelete: SetNull)
   ogImage    Media? @relation("WebsiteSettingOgImage", fields: [ogImageId], references: [id], onDelete: SetNull)
+  ctaBackgroundImage Media? @relation("WebsiteSettingCtaBackground", fields: [ctaBackgroundImageId], references: [id], onDelete: SetNull)
 }
 
 model IntegrationSetting {

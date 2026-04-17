@@ -32,6 +32,7 @@ export type WebsiteSettingAvgAggregateOutputType = {
   footerLogoId: number | null
   faviconId: number | null
   ogImageId: number | null
+  ctaBackgroundImageId: number | null
 }
 
 export type WebsiteSettingSumAggregateOutputType = {
@@ -40,6 +41,7 @@ export type WebsiteSettingSumAggregateOutputType = {
   footerLogoId: number | null
   faviconId: number | null
   ogImageId: number | null
+  ctaBackgroundImageId: number | null
 }
 
 export type WebsiteSettingMinAggregateOutputType = {
@@ -67,6 +69,12 @@ export type WebsiteSettingMinAggregateOutputType = {
   headerScripts: string | null
   bodyScripts: string | null
   footerScripts: string | null
+  ctaTitle: string | null
+  ctaDescription: string | null
+  ctaButtonText: string | null
+  ctaButtonLink: string | null
+  ctaBackgroundImageId: number | null
+  ctaIsActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -96,6 +104,12 @@ export type WebsiteSettingMaxAggregateOutputType = {
   headerScripts: string | null
   bodyScripts: string | null
   footerScripts: string | null
+  ctaTitle: string | null
+  ctaDescription: string | null
+  ctaButtonText: string | null
+  ctaButtonLink: string | null
+  ctaBackgroundImageId: number | null
+  ctaIsActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -125,6 +139,12 @@ export type WebsiteSettingCountAggregateOutputType = {
   headerScripts: number
   bodyScripts: number
   footerScripts: number
+  ctaTitle: number
+  ctaDescription: number
+  ctaButtonText: number
+  ctaButtonLink: number
+  ctaBackgroundImageId: number
+  ctaIsActive: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -137,6 +157,7 @@ export type WebsiteSettingAvgAggregateInputType = {
   footerLogoId?: true
   faviconId?: true
   ogImageId?: true
+  ctaBackgroundImageId?: true
 }
 
 export type WebsiteSettingSumAggregateInputType = {
@@ -145,6 +166,7 @@ export type WebsiteSettingSumAggregateInputType = {
   footerLogoId?: true
   faviconId?: true
   ogImageId?: true
+  ctaBackgroundImageId?: true
 }
 
 export type WebsiteSettingMinAggregateInputType = {
@@ -172,6 +194,12 @@ export type WebsiteSettingMinAggregateInputType = {
   headerScripts?: true
   bodyScripts?: true
   footerScripts?: true
+  ctaTitle?: true
+  ctaDescription?: true
+  ctaButtonText?: true
+  ctaButtonLink?: true
+  ctaBackgroundImageId?: true
+  ctaIsActive?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -201,6 +229,12 @@ export type WebsiteSettingMaxAggregateInputType = {
   headerScripts?: true
   bodyScripts?: true
   footerScripts?: true
+  ctaTitle?: true
+  ctaDescription?: true
+  ctaButtonText?: true
+  ctaButtonLink?: true
+  ctaBackgroundImageId?: true
+  ctaIsActive?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -230,6 +264,12 @@ export type WebsiteSettingCountAggregateInputType = {
   headerScripts?: true
   bodyScripts?: true
   footerScripts?: true
+  ctaTitle?: true
+  ctaDescription?: true
+  ctaButtonText?: true
+  ctaButtonLink?: true
+  ctaBackgroundImageId?: true
+  ctaIsActive?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -346,6 +386,12 @@ export type WebsiteSettingGroupByOutputType = {
   headerScripts: string | null
   bodyScripts: string | null
   footerScripts: string | null
+  ctaTitle: string | null
+  ctaDescription: string | null
+  ctaButtonText: string | null
+  ctaButtonLink: string | null
+  ctaBackgroundImageId: number | null
+  ctaIsActive: boolean
   createdAt: Date
   updatedAt: Date
   _count: WebsiteSettingCountAggregateOutputType | null
@@ -398,12 +444,19 @@ export type WebsiteSettingWhereInput = {
   headerScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
   bodyScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
   footerScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaTitle?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaDescription?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaButtonText?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaButtonLink?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaBackgroundImageId?: Prisma.IntNullableFilter<"WebsiteSetting"> | number | null
+  ctaIsActive?: Prisma.BoolFilter<"WebsiteSetting"> | boolean
   createdAt?: Prisma.DateTimeFilter<"WebsiteSetting"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WebsiteSetting"> | Date | string
   logo?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
   footerLogo?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
   favicon?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
   ogImage?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
+  ctaBackgroundImage?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
 }
 
 export type WebsiteSettingOrderByWithRelationInput = {
@@ -431,12 +484,19 @@ export type WebsiteSettingOrderByWithRelationInput = {
   headerScripts?: Prisma.SortOrderInput | Prisma.SortOrder
   bodyScripts?: Prisma.SortOrderInput | Prisma.SortOrder
   footerScripts?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaButtonText?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaButtonLink?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaIsActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   logo?: Prisma.MediaOrderByWithRelationInput
   footerLogo?: Prisma.MediaOrderByWithRelationInput
   favicon?: Prisma.MediaOrderByWithRelationInput
   ogImage?: Prisma.MediaOrderByWithRelationInput
+  ctaBackgroundImage?: Prisma.MediaOrderByWithRelationInput
 }
 
 export type WebsiteSettingWhereUniqueInput = Prisma.AtLeast<{
@@ -467,12 +527,19 @@ export type WebsiteSettingWhereUniqueInput = Prisma.AtLeast<{
   headerScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
   bodyScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
   footerScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaTitle?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaDescription?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaButtonText?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaButtonLink?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaBackgroundImageId?: Prisma.IntNullableFilter<"WebsiteSetting"> | number | null
+  ctaIsActive?: Prisma.BoolFilter<"WebsiteSetting"> | boolean
   createdAt?: Prisma.DateTimeFilter<"WebsiteSetting"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WebsiteSetting"> | Date | string
   logo?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
   footerLogo?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
   favicon?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
   ogImage?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
+  ctaBackgroundImage?: Prisma.XOR<Prisma.MediaNullableScalarRelationFilter, Prisma.MediaWhereInput> | null
 }, "id">
 
 export type WebsiteSettingOrderByWithAggregationInput = {
@@ -500,6 +567,12 @@ export type WebsiteSettingOrderByWithAggregationInput = {
   headerScripts?: Prisma.SortOrderInput | Prisma.SortOrder
   bodyScripts?: Prisma.SortOrderInput | Prisma.SortOrder
   footerScripts?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaButtonText?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaButtonLink?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrderInput | Prisma.SortOrder
+  ctaIsActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.WebsiteSettingCountOrderByAggregateInput
@@ -537,6 +610,12 @@ export type WebsiteSettingScalarWhereWithAggregatesInput = {
   headerScripts?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
   bodyScripts?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
   footerScripts?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
+  ctaTitle?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
+  ctaDescription?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
+  ctaButtonText?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
+  ctaButtonLink?: Prisma.StringNullableWithAggregatesFilter<"WebsiteSetting"> | string | null
+  ctaBackgroundImageId?: Prisma.IntNullableWithAggregatesFilter<"WebsiteSetting"> | number | null
+  ctaIsActive?: Prisma.BoolWithAggregatesFilter<"WebsiteSetting"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"WebsiteSetting"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"WebsiteSetting"> | Date | string
 }
@@ -561,12 +640,18 @@ export type WebsiteSettingCreateInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   logo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingLogosInput
   footerLogo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFooterLogosInput
   favicon?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFaviconsInput
   ogImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingOgImagesInput
+  ctaBackgroundImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingCtaBackgroundsInput
 }
 
 export type WebsiteSettingUncheckedCreateInput = {
@@ -594,6 +679,12 @@ export type WebsiteSettingUncheckedCreateInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -618,12 +709,18 @@ export type WebsiteSettingUpdateInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logo?: Prisma.MediaUpdateOneWithoutWebsiteSettingLogosNestedInput
   footerLogo?: Prisma.MediaUpdateOneWithoutWebsiteSettingFooterLogosNestedInput
   favicon?: Prisma.MediaUpdateOneWithoutWebsiteSettingFaviconsNestedInput
   ogImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingOgImagesNestedInput
+  ctaBackgroundImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingCtaBackgroundsNestedInput
 }
 
 export type WebsiteSettingUncheckedUpdateInput = {
@@ -651,6 +748,12 @@ export type WebsiteSettingUncheckedUpdateInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -680,6 +783,12 @@ export type WebsiteSettingCreateManyInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -704,6 +813,11 @@ export type WebsiteSettingUpdateManyMutationInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -733,6 +847,12 @@ export type WebsiteSettingUncheckedUpdateManyInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -772,6 +892,12 @@ export type WebsiteSettingCountOrderByAggregateInput = {
   headerScripts?: Prisma.SortOrder
   bodyScripts?: Prisma.SortOrder
   footerScripts?: Prisma.SortOrder
+  ctaTitle?: Prisma.SortOrder
+  ctaDescription?: Prisma.SortOrder
+  ctaButtonText?: Prisma.SortOrder
+  ctaButtonLink?: Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrder
+  ctaIsActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -782,6 +908,7 @@ export type WebsiteSettingAvgOrderByAggregateInput = {
   footerLogoId?: Prisma.SortOrder
   faviconId?: Prisma.SortOrder
   ogImageId?: Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrder
 }
 
 export type WebsiteSettingMaxOrderByAggregateInput = {
@@ -809,6 +936,12 @@ export type WebsiteSettingMaxOrderByAggregateInput = {
   headerScripts?: Prisma.SortOrder
   bodyScripts?: Prisma.SortOrder
   footerScripts?: Prisma.SortOrder
+  ctaTitle?: Prisma.SortOrder
+  ctaDescription?: Prisma.SortOrder
+  ctaButtonText?: Prisma.SortOrder
+  ctaButtonLink?: Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrder
+  ctaIsActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -838,6 +971,12 @@ export type WebsiteSettingMinOrderByAggregateInput = {
   headerScripts?: Prisma.SortOrder
   bodyScripts?: Prisma.SortOrder
   footerScripts?: Prisma.SortOrder
+  ctaTitle?: Prisma.SortOrder
+  ctaDescription?: Prisma.SortOrder
+  ctaButtonText?: Prisma.SortOrder
+  ctaButtonLink?: Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrder
+  ctaIsActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -848,6 +987,7 @@ export type WebsiteSettingSumOrderByAggregateInput = {
   footerLogoId?: Prisma.SortOrder
   faviconId?: Prisma.SortOrder
   ogImageId?: Prisma.SortOrder
+  ctaBackgroundImageId?: Prisma.SortOrder
 }
 
 export type WebsiteSettingCreateNestedManyWithoutLogoInput = {
@@ -878,6 +1018,13 @@ export type WebsiteSettingCreateNestedManyWithoutOgImageInput = {
   connect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
 }
 
+export type WebsiteSettingCreateNestedManyWithoutCtaBackgroundImageInput = {
+  create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput> | Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput[]
+  connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput[]
+  createMany?: Prisma.WebsiteSettingCreateManyCtaBackgroundImageInputEnvelope
+  connect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+}
+
 export type WebsiteSettingUncheckedCreateNestedManyWithoutLogoInput = {
   create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutLogoInput, Prisma.WebsiteSettingUncheckedCreateWithoutLogoInput> | Prisma.WebsiteSettingCreateWithoutLogoInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutLogoInput[]
   connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutLogoInput | Prisma.WebsiteSettingCreateOrConnectWithoutLogoInput[]
@@ -903,6 +1050,13 @@ export type WebsiteSettingUncheckedCreateNestedManyWithoutOgImageInput = {
   create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutOgImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutOgImageInput> | Prisma.WebsiteSettingCreateWithoutOgImageInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutOgImageInput[]
   connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutOgImageInput | Prisma.WebsiteSettingCreateOrConnectWithoutOgImageInput[]
   createMany?: Prisma.WebsiteSettingCreateManyOgImageInputEnvelope
+  connect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+}
+
+export type WebsiteSettingUncheckedCreateNestedManyWithoutCtaBackgroundImageInput = {
+  create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput> | Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput[]
+  connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput[]
+  createMany?: Prisma.WebsiteSettingCreateManyCtaBackgroundImageInputEnvelope
   connect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
 }
 
@@ -962,6 +1116,20 @@ export type WebsiteSettingUpdateManyWithoutOgImageNestedInput = {
   deleteMany?: Prisma.WebsiteSettingScalarWhereInput | Prisma.WebsiteSettingScalarWhereInput[]
 }
 
+export type WebsiteSettingUpdateManyWithoutCtaBackgroundImageNestedInput = {
+  create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput> | Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput[]
+  connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput[]
+  upsert?: Prisma.WebsiteSettingUpsertWithWhereUniqueWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingUpsertWithWhereUniqueWithoutCtaBackgroundImageInput[]
+  createMany?: Prisma.WebsiteSettingCreateManyCtaBackgroundImageInputEnvelope
+  set?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  disconnect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  delete?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  connect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  update?: Prisma.WebsiteSettingUpdateWithWhereUniqueWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingUpdateWithWhereUniqueWithoutCtaBackgroundImageInput[]
+  updateMany?: Prisma.WebsiteSettingUpdateManyWithWhereWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingUpdateManyWithWhereWithoutCtaBackgroundImageInput[]
+  deleteMany?: Prisma.WebsiteSettingScalarWhereInput | Prisma.WebsiteSettingScalarWhereInput[]
+}
+
 export type WebsiteSettingUncheckedUpdateManyWithoutLogoNestedInput = {
   create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutLogoInput, Prisma.WebsiteSettingUncheckedCreateWithoutLogoInput> | Prisma.WebsiteSettingCreateWithoutLogoInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutLogoInput[]
   connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutLogoInput | Prisma.WebsiteSettingCreateOrConnectWithoutLogoInput[]
@@ -1018,6 +1186,20 @@ export type WebsiteSettingUncheckedUpdateManyWithoutOgImageNestedInput = {
   deleteMany?: Prisma.WebsiteSettingScalarWhereInput | Prisma.WebsiteSettingScalarWhereInput[]
 }
 
+export type WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageNestedInput = {
+  create?: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput> | Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput[] | Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput[]
+  connectOrCreate?: Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput[]
+  upsert?: Prisma.WebsiteSettingUpsertWithWhereUniqueWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingUpsertWithWhereUniqueWithoutCtaBackgroundImageInput[]
+  createMany?: Prisma.WebsiteSettingCreateManyCtaBackgroundImageInputEnvelope
+  set?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  disconnect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  delete?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  connect?: Prisma.WebsiteSettingWhereUniqueInput | Prisma.WebsiteSettingWhereUniqueInput[]
+  update?: Prisma.WebsiteSettingUpdateWithWhereUniqueWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingUpdateWithWhereUniqueWithoutCtaBackgroundImageInput[]
+  updateMany?: Prisma.WebsiteSettingUpdateManyWithWhereWithoutCtaBackgroundImageInput | Prisma.WebsiteSettingUpdateManyWithWhereWithoutCtaBackgroundImageInput[]
+  deleteMany?: Prisma.WebsiteSettingScalarWhereInput | Prisma.WebsiteSettingScalarWhereInput[]
+}
+
 export type WebsiteSettingCreateWithoutLogoInput = {
   siteName: string
   siteSlogan?: string | null
@@ -1038,11 +1220,17 @@ export type WebsiteSettingCreateWithoutLogoInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   footerLogo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFooterLogosInput
   favicon?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFaviconsInput
   ogImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingOgImagesInput
+  ctaBackgroundImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingCtaBackgroundsInput
 }
 
 export type WebsiteSettingUncheckedCreateWithoutLogoInput = {
@@ -1069,6 +1257,12 @@ export type WebsiteSettingUncheckedCreateWithoutLogoInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1103,11 +1297,17 @@ export type WebsiteSettingCreateWithoutFooterLogoInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   logo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingLogosInput
   favicon?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFaviconsInput
   ogImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingOgImagesInput
+  ctaBackgroundImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingCtaBackgroundsInput
 }
 
 export type WebsiteSettingUncheckedCreateWithoutFooterLogoInput = {
@@ -1134,6 +1334,12 @@ export type WebsiteSettingUncheckedCreateWithoutFooterLogoInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1168,11 +1374,17 @@ export type WebsiteSettingCreateWithoutFaviconInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   logo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingLogosInput
   footerLogo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFooterLogosInput
   ogImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingOgImagesInput
+  ctaBackgroundImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingCtaBackgroundsInput
 }
 
 export type WebsiteSettingUncheckedCreateWithoutFaviconInput = {
@@ -1199,6 +1411,12 @@ export type WebsiteSettingUncheckedCreateWithoutFaviconInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1233,11 +1451,17 @@ export type WebsiteSettingCreateWithoutOgImageInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   logo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingLogosInput
   footerLogo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFooterLogosInput
   favicon?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFaviconsInput
+  ctaBackgroundImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingCtaBackgroundsInput
 }
 
 export type WebsiteSettingUncheckedCreateWithoutOgImageInput = {
@@ -1264,6 +1488,12 @@ export type WebsiteSettingUncheckedCreateWithoutOgImageInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1275,6 +1505,83 @@ export type WebsiteSettingCreateOrConnectWithoutOgImageInput = {
 
 export type WebsiteSettingCreateManyOgImageInputEnvelope = {
   data: Prisma.WebsiteSettingCreateManyOgImageInput | Prisma.WebsiteSettingCreateManyOgImageInput[]
+  skipDuplicates?: boolean
+}
+
+export type WebsiteSettingCreateWithoutCtaBackgroundImageInput = {
+  siteName: string
+  siteSlogan?: string | null
+  siteDescription?: string | null
+  email?: string | null
+  hotline?: string | null
+  hotlineDisplay?: string | null
+  zaloPhone?: string | null
+  address?: string | null
+  googleMapIframe?: string | null
+  facebookUrl?: string | null
+  youtubeUrl?: string | null
+  tiktokUrl?: string | null
+  linkedinUrl?: string | null
+  instagramUrl?: string | null
+  copyrightText?: string | null
+  defaultLanguage?: string | null
+  headerScripts?: string | null
+  bodyScripts?: string | null
+  footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  logo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingLogosInput
+  footerLogo?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFooterLogosInput
+  favicon?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingFaviconsInput
+  ogImage?: Prisma.MediaCreateNestedOneWithoutWebsiteSettingOgImagesInput
+}
+
+export type WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput = {
+  id?: number
+  siteName: string
+  siteSlogan?: string | null
+  siteDescription?: string | null
+  logoId?: number | null
+  footerLogoId?: number | null
+  faviconId?: number | null
+  email?: string | null
+  hotline?: string | null
+  hotlineDisplay?: string | null
+  zaloPhone?: string | null
+  address?: string | null
+  googleMapIframe?: string | null
+  facebookUrl?: string | null
+  youtubeUrl?: string | null
+  tiktokUrl?: string | null
+  linkedinUrl?: string | null
+  instagramUrl?: string | null
+  copyrightText?: string | null
+  defaultLanguage?: string | null
+  ogImageId?: number | null
+  headerScripts?: string | null
+  bodyScripts?: string | null
+  footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type WebsiteSettingCreateOrConnectWithoutCtaBackgroundImageInput = {
+  where: Prisma.WebsiteSettingWhereUniqueInput
+  create: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput>
+}
+
+export type WebsiteSettingCreateManyCtaBackgroundImageInputEnvelope = {
+  data: Prisma.WebsiteSettingCreateManyCtaBackgroundImageInput | Prisma.WebsiteSettingCreateManyCtaBackgroundImageInput[]
   skipDuplicates?: boolean
 }
 
@@ -1322,6 +1629,12 @@ export type WebsiteSettingScalarWhereInput = {
   headerScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
   bodyScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
   footerScripts?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaTitle?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaDescription?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaButtonText?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaButtonLink?: Prisma.StringNullableFilter<"WebsiteSetting"> | string | null
+  ctaBackgroundImageId?: Prisma.IntNullableFilter<"WebsiteSetting"> | number | null
+  ctaIsActive?: Prisma.BoolFilter<"WebsiteSetting"> | boolean
   createdAt?: Prisma.DateTimeFilter<"WebsiteSetting"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"WebsiteSetting"> | Date | string
 }
@@ -1374,6 +1687,22 @@ export type WebsiteSettingUpdateManyWithWhereWithoutOgImageInput = {
   data: Prisma.XOR<Prisma.WebsiteSettingUpdateManyMutationInput, Prisma.WebsiteSettingUncheckedUpdateManyWithoutOgImageInput>
 }
 
+export type WebsiteSettingUpsertWithWhereUniqueWithoutCtaBackgroundImageInput = {
+  where: Prisma.WebsiteSettingWhereUniqueInput
+  update: Prisma.XOR<Prisma.WebsiteSettingUpdateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedUpdateWithoutCtaBackgroundImageInput>
+  create: Prisma.XOR<Prisma.WebsiteSettingCreateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedCreateWithoutCtaBackgroundImageInput>
+}
+
+export type WebsiteSettingUpdateWithWhereUniqueWithoutCtaBackgroundImageInput = {
+  where: Prisma.WebsiteSettingWhereUniqueInput
+  data: Prisma.XOR<Prisma.WebsiteSettingUpdateWithoutCtaBackgroundImageInput, Prisma.WebsiteSettingUncheckedUpdateWithoutCtaBackgroundImageInput>
+}
+
+export type WebsiteSettingUpdateManyWithWhereWithoutCtaBackgroundImageInput = {
+  where: Prisma.WebsiteSettingScalarWhereInput
+  data: Prisma.XOR<Prisma.WebsiteSettingUpdateManyMutationInput, Prisma.WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageInput>
+}
+
 export type WebsiteSettingCreateManyLogoInput = {
   id?: number
   siteName: string
@@ -1398,6 +1727,12 @@ export type WebsiteSettingCreateManyLogoInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1426,6 +1761,12 @@ export type WebsiteSettingCreateManyFooterLogoInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1454,6 +1795,12 @@ export type WebsiteSettingCreateManyFaviconInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1482,6 +1829,46 @@ export type WebsiteSettingCreateManyOgImageInput = {
   headerScripts?: string | null
   bodyScripts?: string | null
   footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaBackgroundImageId?: number | null
+  ctaIsActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type WebsiteSettingCreateManyCtaBackgroundImageInput = {
+  id?: number
+  siteName: string
+  siteSlogan?: string | null
+  siteDescription?: string | null
+  logoId?: number | null
+  footerLogoId?: number | null
+  faviconId?: number | null
+  email?: string | null
+  hotline?: string | null
+  hotlineDisplay?: string | null
+  zaloPhone?: string | null
+  address?: string | null
+  googleMapIframe?: string | null
+  facebookUrl?: string | null
+  youtubeUrl?: string | null
+  tiktokUrl?: string | null
+  linkedinUrl?: string | null
+  instagramUrl?: string | null
+  copyrightText?: string | null
+  defaultLanguage?: string | null
+  ogImageId?: number | null
+  headerScripts?: string | null
+  bodyScripts?: string | null
+  footerScripts?: string | null
+  ctaTitle?: string | null
+  ctaDescription?: string | null
+  ctaButtonText?: string | null
+  ctaButtonLink?: string | null
+  ctaIsActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1506,11 +1893,17 @@ export type WebsiteSettingUpdateWithoutLogoInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   footerLogo?: Prisma.MediaUpdateOneWithoutWebsiteSettingFooterLogosNestedInput
   favicon?: Prisma.MediaUpdateOneWithoutWebsiteSettingFaviconsNestedInput
   ogImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingOgImagesNestedInput
+  ctaBackgroundImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingCtaBackgroundsNestedInput
 }
 
 export type WebsiteSettingUncheckedUpdateWithoutLogoInput = {
@@ -1537,6 +1930,12 @@ export type WebsiteSettingUncheckedUpdateWithoutLogoInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1565,6 +1964,12 @@ export type WebsiteSettingUncheckedUpdateManyWithoutLogoInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1589,11 +1994,17 @@ export type WebsiteSettingUpdateWithoutFooterLogoInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logo?: Prisma.MediaUpdateOneWithoutWebsiteSettingLogosNestedInput
   favicon?: Prisma.MediaUpdateOneWithoutWebsiteSettingFaviconsNestedInput
   ogImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingOgImagesNestedInput
+  ctaBackgroundImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingCtaBackgroundsNestedInput
 }
 
 export type WebsiteSettingUncheckedUpdateWithoutFooterLogoInput = {
@@ -1620,6 +2031,12 @@ export type WebsiteSettingUncheckedUpdateWithoutFooterLogoInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1648,6 +2065,12 @@ export type WebsiteSettingUncheckedUpdateManyWithoutFooterLogoInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1672,11 +2095,17 @@ export type WebsiteSettingUpdateWithoutFaviconInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logo?: Prisma.MediaUpdateOneWithoutWebsiteSettingLogosNestedInput
   footerLogo?: Prisma.MediaUpdateOneWithoutWebsiteSettingFooterLogosNestedInput
   ogImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingOgImagesNestedInput
+  ctaBackgroundImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingCtaBackgroundsNestedInput
 }
 
 export type WebsiteSettingUncheckedUpdateWithoutFaviconInput = {
@@ -1703,6 +2132,12 @@ export type WebsiteSettingUncheckedUpdateWithoutFaviconInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1731,6 +2166,12 @@ export type WebsiteSettingUncheckedUpdateManyWithoutFaviconInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1755,11 +2196,17 @@ export type WebsiteSettingUpdateWithoutOgImageInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   logo?: Prisma.MediaUpdateOneWithoutWebsiteSettingLogosNestedInput
   footerLogo?: Prisma.MediaUpdateOneWithoutWebsiteSettingFooterLogosNestedInput
   favicon?: Prisma.MediaUpdateOneWithoutWebsiteSettingFaviconsNestedInput
+  ctaBackgroundImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingCtaBackgroundsNestedInput
 }
 
 export type WebsiteSettingUncheckedUpdateWithoutOgImageInput = {
@@ -1786,6 +2233,12 @@ export type WebsiteSettingUncheckedUpdateWithoutOgImageInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1814,6 +2267,113 @@ export type WebsiteSettingUncheckedUpdateManyWithoutOgImageInput = {
   headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaBackgroundImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type WebsiteSettingUpdateWithoutCtaBackgroundImageInput = {
+  siteName?: Prisma.StringFieldUpdateOperationsInput | string
+  siteSlogan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siteDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotlineDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zaloPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleMapIframe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  copyrightText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultLanguage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  logo?: Prisma.MediaUpdateOneWithoutWebsiteSettingLogosNestedInput
+  footerLogo?: Prisma.MediaUpdateOneWithoutWebsiteSettingFooterLogosNestedInput
+  favicon?: Prisma.MediaUpdateOneWithoutWebsiteSettingFaviconsNestedInput
+  ogImage?: Prisma.MediaUpdateOneWithoutWebsiteSettingOgImagesNestedInput
+}
+
+export type WebsiteSettingUncheckedUpdateWithoutCtaBackgroundImageInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  siteName?: Prisma.StringFieldUpdateOperationsInput | string
+  siteSlogan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siteDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  footerLogoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  faviconId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotlineDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zaloPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleMapIframe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  copyrightText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultLanguage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ogImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type WebsiteSettingUncheckedUpdateManyWithoutCtaBackgroundImageInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  siteName?: Prisma.StringFieldUpdateOperationsInput | string
+  siteSlogan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  siteDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  footerLogoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  faviconId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hotlineDisplay?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zaloPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleMapIframe?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktokUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  copyrightText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  defaultLanguage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ogImageId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  headerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  footerScripts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaButtonLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ctaIsActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1845,12 +2405,19 @@ export type WebsiteSettingSelect<ExtArgs extends runtime.Types.Extensions.Intern
   headerScripts?: boolean
   bodyScripts?: boolean
   footerScripts?: boolean
+  ctaTitle?: boolean
+  ctaDescription?: boolean
+  ctaButtonText?: boolean
+  ctaButtonLink?: boolean
+  ctaBackgroundImageId?: boolean
+  ctaIsActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   logo?: boolean | Prisma.WebsiteSetting$logoArgs<ExtArgs>
   footerLogo?: boolean | Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>
   favicon?: boolean | Prisma.WebsiteSetting$faviconArgs<ExtArgs>
   ogImage?: boolean | Prisma.WebsiteSetting$ogImageArgs<ExtArgs>
+  ctaBackgroundImage?: boolean | Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>
 }, ExtArgs["result"]["websiteSetting"]>
 
 export type WebsiteSettingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1878,12 +2445,19 @@ export type WebsiteSettingSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   headerScripts?: boolean
   bodyScripts?: boolean
   footerScripts?: boolean
+  ctaTitle?: boolean
+  ctaDescription?: boolean
+  ctaButtonText?: boolean
+  ctaButtonLink?: boolean
+  ctaBackgroundImageId?: boolean
+  ctaIsActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   logo?: boolean | Prisma.WebsiteSetting$logoArgs<ExtArgs>
   footerLogo?: boolean | Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>
   favicon?: boolean | Prisma.WebsiteSetting$faviconArgs<ExtArgs>
   ogImage?: boolean | Prisma.WebsiteSetting$ogImageArgs<ExtArgs>
+  ctaBackgroundImage?: boolean | Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>
 }, ExtArgs["result"]["websiteSetting"]>
 
 export type WebsiteSettingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1911,12 +2485,19 @@ export type WebsiteSettingSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   headerScripts?: boolean
   bodyScripts?: boolean
   footerScripts?: boolean
+  ctaTitle?: boolean
+  ctaDescription?: boolean
+  ctaButtonText?: boolean
+  ctaButtonLink?: boolean
+  ctaBackgroundImageId?: boolean
+  ctaIsActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   logo?: boolean | Prisma.WebsiteSetting$logoArgs<ExtArgs>
   footerLogo?: boolean | Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>
   favicon?: boolean | Prisma.WebsiteSetting$faviconArgs<ExtArgs>
   ogImage?: boolean | Prisma.WebsiteSetting$ogImageArgs<ExtArgs>
+  ctaBackgroundImage?: boolean | Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>
 }, ExtArgs["result"]["websiteSetting"]>
 
 export type WebsiteSettingSelectScalar = {
@@ -1944,28 +2525,37 @@ export type WebsiteSettingSelectScalar = {
   headerScripts?: boolean
   bodyScripts?: boolean
   footerScripts?: boolean
+  ctaTitle?: boolean
+  ctaDescription?: boolean
+  ctaButtonText?: boolean
+  ctaButtonLink?: boolean
+  ctaBackgroundImageId?: boolean
+  ctaIsActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type WebsiteSettingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "siteName" | "siteSlogan" | "siteDescription" | "logoId" | "footerLogoId" | "faviconId" | "email" | "hotline" | "hotlineDisplay" | "zaloPhone" | "address" | "googleMapIframe" | "facebookUrl" | "youtubeUrl" | "tiktokUrl" | "linkedinUrl" | "instagramUrl" | "copyrightText" | "defaultLanguage" | "ogImageId" | "headerScripts" | "bodyScripts" | "footerScripts" | "createdAt" | "updatedAt", ExtArgs["result"]["websiteSetting"]>
+export type WebsiteSettingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "siteName" | "siteSlogan" | "siteDescription" | "logoId" | "footerLogoId" | "faviconId" | "email" | "hotline" | "hotlineDisplay" | "zaloPhone" | "address" | "googleMapIframe" | "facebookUrl" | "youtubeUrl" | "tiktokUrl" | "linkedinUrl" | "instagramUrl" | "copyrightText" | "defaultLanguage" | "ogImageId" | "headerScripts" | "bodyScripts" | "footerScripts" | "ctaTitle" | "ctaDescription" | "ctaButtonText" | "ctaButtonLink" | "ctaBackgroundImageId" | "ctaIsActive" | "createdAt" | "updatedAt", ExtArgs["result"]["websiteSetting"]>
 export type WebsiteSettingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logo?: boolean | Prisma.WebsiteSetting$logoArgs<ExtArgs>
   footerLogo?: boolean | Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>
   favicon?: boolean | Prisma.WebsiteSetting$faviconArgs<ExtArgs>
   ogImage?: boolean | Prisma.WebsiteSetting$ogImageArgs<ExtArgs>
+  ctaBackgroundImage?: boolean | Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>
 }
 export type WebsiteSettingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logo?: boolean | Prisma.WebsiteSetting$logoArgs<ExtArgs>
   footerLogo?: boolean | Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>
   favicon?: boolean | Prisma.WebsiteSetting$faviconArgs<ExtArgs>
   ogImage?: boolean | Prisma.WebsiteSetting$ogImageArgs<ExtArgs>
+  ctaBackgroundImage?: boolean | Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>
 }
 export type WebsiteSettingIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   logo?: boolean | Prisma.WebsiteSetting$logoArgs<ExtArgs>
   footerLogo?: boolean | Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>
   favicon?: boolean | Prisma.WebsiteSetting$faviconArgs<ExtArgs>
   ogImage?: boolean | Prisma.WebsiteSetting$ogImageArgs<ExtArgs>
+  ctaBackgroundImage?: boolean | Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>
 }
 
 export type $WebsiteSettingPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1975,6 +2565,7 @@ export type $WebsiteSettingPayload<ExtArgs extends runtime.Types.Extensions.Inte
     footerLogo: Prisma.$MediaPayload<ExtArgs> | null
     favicon: Prisma.$MediaPayload<ExtArgs> | null
     ogImage: Prisma.$MediaPayload<ExtArgs> | null
+    ctaBackgroundImage: Prisma.$MediaPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -2001,6 +2592,12 @@ export type $WebsiteSettingPayload<ExtArgs extends runtime.Types.Extensions.Inte
     headerScripts: string | null
     bodyScripts: string | null
     footerScripts: string | null
+    ctaTitle: string | null
+    ctaDescription: string | null
+    ctaButtonText: string | null
+    ctaButtonLink: string | null
+    ctaBackgroundImageId: number | null
+    ctaIsActive: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["websiteSetting"]>
@@ -2401,6 +2998,7 @@ export interface Prisma__WebsiteSettingClient<T, Null = never, ExtArgs extends r
   footerLogo<T extends Prisma.WebsiteSetting$footerLogoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WebsiteSetting$footerLogoArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   favicon<T extends Prisma.WebsiteSetting$faviconArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WebsiteSetting$faviconArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ogImage<T extends Prisma.WebsiteSetting$ogImageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WebsiteSetting$ogImageArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  ctaBackgroundImage<T extends Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WebsiteSetting$ctaBackgroundImageArgs<ExtArgs>>): Prisma.Prisma__MediaClient<runtime.Types.Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2454,6 +3052,12 @@ export interface WebsiteSettingFieldRefs {
   readonly headerScripts: Prisma.FieldRef<"WebsiteSetting", 'String'>
   readonly bodyScripts: Prisma.FieldRef<"WebsiteSetting", 'String'>
   readonly footerScripts: Prisma.FieldRef<"WebsiteSetting", 'String'>
+  readonly ctaTitle: Prisma.FieldRef<"WebsiteSetting", 'String'>
+  readonly ctaDescription: Prisma.FieldRef<"WebsiteSetting", 'String'>
+  readonly ctaButtonText: Prisma.FieldRef<"WebsiteSetting", 'String'>
+  readonly ctaButtonLink: Prisma.FieldRef<"WebsiteSetting", 'String'>
+  readonly ctaBackgroundImageId: Prisma.FieldRef<"WebsiteSetting", 'Int'>
+  readonly ctaIsActive: Prisma.FieldRef<"WebsiteSetting", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"WebsiteSetting", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"WebsiteSetting", 'DateTime'>
 }
@@ -2917,6 +3521,25 @@ export type WebsiteSetting$faviconArgs<ExtArgs extends runtime.Types.Extensions.
  * WebsiteSetting.ogImage
  */
 export type WebsiteSetting$ogImageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Media
+   */
+  select?: Prisma.MediaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Media
+   */
+  omit?: Prisma.MediaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MediaInclude<ExtArgs> | null
+  where?: Prisma.MediaWhereInput
+}
+
+/**
+ * WebsiteSetting.ctaBackgroundImage
+ */
+export type WebsiteSetting$ctaBackgroundImageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Media
    */

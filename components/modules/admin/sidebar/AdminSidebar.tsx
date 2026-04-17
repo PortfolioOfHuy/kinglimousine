@@ -39,7 +39,8 @@ export default function AdminSidebar({ open, onClose }: Props) {
     pathname.startsWith("/admin/services") ||
     pathname.startsWith("/admin/fleet") ||
     pathname.startsWith("/admin/how-to-book") ||
-    pathname.startsWith("/admin/why-choose-us");
+    pathname.startsWith("/admin/why-choose-us") ||
+    pathname.startsWith("/admin/cta");
 
   const isPageGroupActive =
     pathname.startsWith("/admin/news") ||
@@ -298,6 +299,18 @@ export default function AdminSidebar({ open, onClose }: Props) {
                   onClick={onClose}
                 >
                   <span>Các lý do nổi bật</span>
+                </Link>
+
+                <Link
+                  href="/admin/cta"
+                  className={`${styles.subNavItem} ${
+                    pathname.startsWith("/admin/cta")
+                      ? styles.subNavItemActive
+                      : ""
+                  }`}
+                  onClick={onClose}
+                >
+                  <span>CTA Trang chủ</span>
                 </Link>
               </div>
             </div>
