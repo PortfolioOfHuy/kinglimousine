@@ -1,21 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { jwtVerify } from "jose";
+import { signAdminToken, verifyAdminToken } from "@/lib/auth";
 
-const JWT_SECRET = process.env.JWT_SECRET;
-
-if (!JWT_SECRET) {
-  throw new Error("JWT_SECRET is not defined in .env");
-}
-
-const secretKey = new TextEncoder().encode(JWT_SECRET);
-
-async function verifyToken(token: string) {
-  try {
-    await jwtVerify(token, secretKey);
-    return true;
-  } catch {
-    return false;
-  }
+function clearAndRedirectToLogin(request: NextRequest) {
+  const response = NextResponse.redirect(new URL("/admin/login", request.url));
+  response.cookies.delete("admin_token");
+  return response;
 }
 
 export async function middleware(request: NextRequest) {
@@ -24,28 +13,51 @@ export async function middleware(request: NextRequest) {
   const isAdminPage = pathname.startsWith("/admin");
   const isLoginPage = pathname === "/admin/login";
 
+  if (!isAdminPage) {
+    return NextResponse.next();
+  }
+
   const token = request.cookies.get("admin_token")?.value;
 
-  if (isLoginPage && token) {
-    const isValid = await verifyToken(token);
-    if (isValid) {
+  if (isLoginPage) {
+    if (!token) return NextResponse.next();
+
+    try {
+      await verifyAdminToken(token);
       return NextResponse.redirect(new URL("/admin", request.url));
+    } catch {
+      const response = NextResponse.next();
+      response.cookies.delete("admin_token");
+      return response;
     }
   }
 
-  if (isAdminPage && !isLoginPage) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
-    }
-
-    const isValid = await verifyToken(token);
-
-    if (!isValid) {
-      return NextResponse.redirect(new URL("/admin/login", request.url));
-    }
+  if (!token) {
+    return clearAndRedirectToLogin(request);
   }
 
-  return NextResponse.next();
+  try {
+    const payload = await verifyAdminToken(token);
+
+    const refreshedToken = await signAdminToken({
+      userId: payload.userId,
+      name: payload.name,
+    });
+
+    const response = NextResponse.next();
+
+    response.cookies.set("admin_token", refreshedToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 15,
+    });
+
+    return response;
+  } catch {
+    return clearAndRedirectToLogin(request);
+  }
 }
 
 export const config = {
