@@ -20,6 +20,102 @@ function getInitialVisibleCount(width: number) {
   return 9;
 }
 
+function decodeHtmlEntities(input: string) {
+  const namedMap: Record<string, string> = {
+    nbsp: " ",
+    amp: "&",
+    lt: "<",
+    gt: ">",
+    quot: '"',
+    apos: "'",
+    agrave: "à",
+    aacute: "á",
+    acirc: "â",
+    atilde: "ã",
+    abreve: "ă",
+    aring: "å",
+    auml: "ä",
+    egrave: "è",
+    eacute: "é",
+    ecirc: "ê",
+    euml: "ë",
+    igrave: "ì",
+    iacute: "í",
+    icirc: "î",
+    iuml: "ï",
+    ograve: "ò",
+    oacute: "ó",
+    ocirc: "ô",
+    otilde: "õ",
+    ouml: "ö",
+    ohorn: "ơ",
+    ugrave: "ù",
+    uacute: "ú",
+    ucirc: "û",
+    uuml: "ü",
+    uhorn: "ư",
+    yacute: "ý",
+    yuml: "ÿ",
+    Agrave: "À",
+    Aacute: "Á",
+    Acirc: "Â",
+    Atilde: "Ã",
+    Abreve: "Ă",
+    Aring: "Å",
+    Auml: "Ä",
+    Egrave: "È",
+    Eacute: "É",
+    Ecirc: "Ê",
+    Euml: "Ë",
+    Igrave: "Ì",
+    Iacute: "Í",
+    Icirc: "Î",
+    Iuml: "Ï",
+    Ograve: "Ò",
+    Oacute: "Ó",
+    Ocirc: "Ô",
+    Otilde: "Õ",
+    Ouml: "Ö",
+    Ohorn: "Ơ",
+    Ugrave: "Ù",
+    Uacute: "Ú",
+    Ucirc: "Û",
+    Uuml: "Ü",
+    Uhorn: "Ư",
+    Yacute: "Ý",
+  };
+
+  return input
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) =>
+      String.fromCodePoint(parseInt(hex, 16)),
+    )
+    .replace(/&([a-zA-Z]+);/g, (match, name) => namedMap[name] ?? match);
+}
+
+function htmlToPlainText(html: string) {
+  return decodeHtmlEntities(
+    html
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/p>/gi, "\n")
+      .replace(/<p[^>]*>/gi, "")
+      .replace(/<\/div>/gi, "\n")
+      .replace(/<div[^>]*>/gi, "")
+      .replace(/<\/li>/gi, "\n")
+      .replace(/<li[^>]*>/gi, "- ")
+      .replace(/<ul[^>]*>/gi, "")
+      .replace(/<\/ul>/gi, "\n")
+      .replace(/<ol[^>]*>/gi, "")
+      .replace(/<\/ol>/gi, "\n")
+      .replace(/<[^>]*>/g, "")
+      .replace(/\r/g, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n[ \t]+/g, "\n")
+      .trim(),
+  );
+}
+
 export default function FleetTabs({ categories, products }: Props) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [initialVisibleCount, setInitialVisibleCount] = useState(9);
@@ -143,7 +239,9 @@ export default function FleetTabs({ categories, products }: Props) {
                       </div>
                     )}
 
-                    <p className={styles.cardSummary}>{product.summary}</p>
+                    <p className={styles.cardSummary}>
+                      {htmlToPlainText(product.summary || "")}
+                    </p>
 
                     {product.priceText ? (
                       <div className={styles.price}>{product.priceText}</div>

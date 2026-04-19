@@ -3,6 +3,6 @@ import { Open_Sans } from "next/font/google";
 export const openSans = Open_Sans({
   variable: "--font-open-sans",
   display: "swap",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700"],
 });

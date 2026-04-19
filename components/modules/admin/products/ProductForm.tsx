@@ -168,17 +168,15 @@ export default function ProductForm({
               </div>
 
               <div className={styles.field}>
-                <label htmlFor="summary" className={styles.label}>
-                  Mô tả ngắn
-                </label>
-                <textarea
-                  id="summary"
-                  name="summary"
-                  rows={4}
-                  defaultValue={defaultValues?.summary ?? ""}
-                  placeholder="Nhập mô tả ngắn..."
-                  className={styles.textarea}
-                />
+                <label className={styles.label}>Mô tả ngắn</label>
+
+                <div className={styles.editorWrap}>
+                  <Ckeditor4Field
+                    name="summary"
+                    defaultValue={defaultValues?.summary ?? ""}
+                    className={styles.editorTextarea}
+                  />
+                </div>
               </div>
 
               <div className={styles.field}>
