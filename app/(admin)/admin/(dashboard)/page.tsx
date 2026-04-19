@@ -8,6 +8,10 @@ type PageProps = {
   }>;
 };
 
+export const metadata = {
+  title: "Trang Quản Trị",
+};
+
 export default async function AdminDashboardPage({ searchParams }: PageProps) {
   const resolvedSearchParams = await searchParams;
 

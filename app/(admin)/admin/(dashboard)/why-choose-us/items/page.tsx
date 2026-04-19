@@ -1,6 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import WhyChooseUsItemsTable from "@/components/modules/admin/why-choose-us/items/WhyChooseUsItemsTable";
 
+export const metadata = {
+  title: "Trang Quản Trị",
+};
+
 export default async function WhyChooseUsItemsPage() {
   const items = await prisma.staticPage.findMany({
     where: {

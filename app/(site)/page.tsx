@@ -11,6 +11,10 @@ import { getHomeWhyChooseUs } from "@/lib/site/get-home-why-choose-us";
 import { getHomeNews } from "@/lib/site/get-home-news";
 import { getHomeCta } from "@/lib/site/get-home-cta";
 
+export const metadata = {
+  title: "Trang chủ",
+};
+
 export default async function HomePage() {
   const [howToBookItems, whyChooseUsData, newsItems, ctaData] =
     await Promise.all([
