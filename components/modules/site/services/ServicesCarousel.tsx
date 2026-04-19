@@ -21,11 +21,8 @@ export default function ServicesCarousel({ services }: Props) {
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      const nextItemsPerView = getItemsPerView(window.innerWidth);
-
-      setItemsPerView((prev) =>
-        prev === nextItemsPerView ? prev : nextItemsPerView,
-      );
+      const next = getItemsPerView(window.innerWidth);
+      setItemsPerView((prev) => (prev === next ? prev : next));
     };
 
     updateItemsPerView();
@@ -42,10 +39,12 @@ export default function ServicesCarousel({ services }: Props) {
   }, [maxIndex]);
 
   const handlePrev = () => {
+    if (!canSlide) return;
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
   const handleNext = () => {
+    if (!canSlide) return;
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 

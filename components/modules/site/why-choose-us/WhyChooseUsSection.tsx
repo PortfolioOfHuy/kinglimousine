@@ -28,7 +28,6 @@ export default function WhyChooseUsSection({ data }: Props) {
               src={data.intro.image}
               alt={data.intro.imageAlt}
               fill
-              quality={100}
               className={styles.image}
               sizes="(max-width: 991px) 100vw, 1280px"
               priority={false}

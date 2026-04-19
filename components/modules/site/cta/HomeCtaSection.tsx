@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./HomeCtaSection.module.scss";
 import type { HomeCtaData } from "@/lib/site/get-home-cta";
 
@@ -31,7 +32,13 @@ export default function HomeCtaSection({ data }: Props) {
             <p className={styles.description}>{data.description}</p>
 
             <Link href="/lien-he" className={styles.button}>
-              <span className={styles.buttonIcon}>→</span>
+              <span className={styles.buttonIcon}>
+                <ArrowUpRight
+                  className={styles.buttonIconSvg}
+                  size={18}
+                  strokeWidth={2.2}
+                />
+              </span>
               <span className={styles.buttonText}>Đặt Xe Ngay</span>
             </Link>
           </div>

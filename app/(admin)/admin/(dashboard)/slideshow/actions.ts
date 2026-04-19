@@ -178,4 +178,5 @@ export async function deleteSlideshow(formData: FormData) {
 
   revalidatePath("/admin/slideshow");
   revalidatePath("/", "layout");
+  redirect("/admin/slideshow");
 }

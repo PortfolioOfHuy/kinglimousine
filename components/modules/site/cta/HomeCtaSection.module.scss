@@ -79,28 +79,48 @@
 }
 
 .buttonIcon {
-  width: 50px;
+  width: 56px;
   height: 48px;
+  flex: 0 0 56px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: var(--color-primary);
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
+  color: var(--color-white);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .buttonText {
   height: 48px;
-  padding: 0 22px;
+  padding: 0 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #111;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
+  background: #000;
+  color: var(--color-white);
+  font-size: var(--fs-body);
+  font-weight: 600;
   white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.buttonIconSvg {
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+}
+
+.button:hover .buttonIcon,
+.button:hover .buttonText {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.button:hover .buttonIconSvg {
+  transform: rotate(45deg);
 }
 
 @media (max-width: 991px) {
@@ -125,13 +145,14 @@
   }
 
   .buttonIcon {
-    width: 46px;
+    width: 50px;
     height: 44px;
+    flex-basis: 50px;
   }
 
   .buttonText {
     height: 44px;
-    padding: 0 18px;
-    font-size: 14px;
+    padding: 0 14px;
+    font-size: 15px;
   }
 }

@@ -45,7 +45,7 @@ export default function AdminSidebar({ open, onClose }: Props) {
   const isPageGroupActive =
     pathname.startsWith("/admin/news") ||
     pathname.startsWith("/admin/posts") ||
-    pathname.startsWith("/admin/about");
+    pathname.startsWith("/admin/about-us");
 
   const [productOpen, setProductOpen] = useState(isProductGroupActive);
   const [imageOpen, setImageOpen] = useState(isImageGroupActive);
@@ -366,9 +366,9 @@ export default function AdminSidebar({ open, onClose }: Props) {
                 </Link>
 
                 <Link
-                  href="/admin/about"
+                  href="/admin/about-us"
                   className={`${styles.subNavItem} ${
-                    pathname.startsWith("/admin/about")
+                    pathname.startsWith("/admin/about-us")
                       ? styles.subNavItemActive
                       : ""
                   }`}

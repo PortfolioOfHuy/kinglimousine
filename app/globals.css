@@ -25,13 +25,13 @@
   --admin-danger: #ef4444;
 
   /* Size */
-  --fs-h1: clamp(32px, 4vw, 48px);
-  --fs-h2: clamp(26px, 3vw, 36px);
-  --fs-h3: clamp(22px, 2.2vw, 28px);
-  --fs-h4: clamp(18px, 1.8vw, 22px);
+  --fs-h1: clamp(40px, 4.8vw, 64px);
+  --fs-h2: clamp(34px, 3.8vw, 56px);
+  --fs-h3: clamp(24px, 2vw, 34px);
+  --fs-h4: clamp(18px, 1.6vw, 24px);
   --fs-body: 16px;
   --fs-body-lg: 18px;
-  --fs-small: 14px;
+  --fs-small: 15px;
   --fs-caption: 12px;
 }
 

@@ -1,10 +1,10 @@
 .section {
-  padding: 88px 0 96px;
+  padding: 76px 0 84px;
   background: transparent;
 }
 
 .container {
-  width: min(1280px, calc(100% - 48px));
+  width: min(1520px, calc(100% - 24px));
   margin: 0 auto;
 }
 
@@ -12,42 +12,45 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 42px;
+  gap: 16px;
+  margin-bottom: 34px;
 }
 
 .headingBlock {
-  max-width: 700px;
+  max-width: 1100px;
+  flex: 1;
+  min-width: 0;
 }
 
 .heading {
-  margin: 0 0 16px;
-  font-size: clamp(24px, 2.2vw, 38px);
-  line-height: 1.12;
+  margin: 0 0 12px;
+  font-size: clamp(26px, 2.15vw, 38px);
+  line-height: 1.1;
   font-weight: 800;
   color: var(--color-black);
   text-transform: uppercase;
-  max-width: 720px;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .description {
   margin: 0;
   color: rgba(0, 0, 0, 0.58);
-  font-size: var(--fs-body);
-  line-height: 1.8;
-  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 700px;
 }
 
 .actions {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
 .navButton {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border: 1px solid var(--color-primary);
   background: var(--color-primary);
   color: var(--color-white);
@@ -58,19 +61,28 @@
   transition:
     transform 0.2s ease,
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
 
-  &:hover {
-    transform: translateY(-1px);
-    background: #c99a4f;
-    border-color: #c99a4f;
-  }
+.navButton:hover {
+  transform: translateY(-1px);
+  background: #c99a4f;
+  border-color: #c99a4f;
+  opacity: 0.95;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 18px;
+}
+
+.desktopGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mobileGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .card {
@@ -79,30 +91,28 @@
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 .dateRow {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding-bottom: 12px;
-  margin-bottom: 18px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .day {
-  font-size: clamp(30px, 2.4vw, 42px);
-  line-height: 0.9;
+  font-size: clamp(28px, 2vw, 38px);
+  line-height: 0.95;
   font-weight: 800;
   color: var(--color-black);
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
 }
 
 .dateMeta {
@@ -110,35 +120,36 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-width: 70px;
+  min-width: 62px;
   position: relative;
-  color: rgba(0, 0, 0, 0.72);
-  font-size: 12px;
-  line-height: 1.25;
+  color: rgba(0, 0, 0, 0.68);
+  font-size: 11px;
+  line-height: 1.2;
 
   &::before {
     content: "";
     position: absolute;
-    left: -6px;
+    left: -5px;
     top: 2px;
     bottom: 2px;
     width: 1px;
-    background: rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.24);
   }
 }
 
 .cardTitle {
-  margin: 0 0 12px;
-  font-size: clamp(18px, 1.3vw, 24px);
-  line-height: 1.45;
+  margin: 0 0 10px;
+  font-size: clamp(18px, 1.15vw, 22px);
+  line-height: 1.4;
   font-weight: 800;
   color: var(--color-black);
   transition: color 0.2s ease;
+
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 2.9em;
+  min-height: 2.8em;
 }
 
 .card:hover .cardTitle {
@@ -146,21 +157,22 @@
 }
 
 .cardSummary {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: rgba(0, 0, 0, 0.58);
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.7;
+
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 3.6em;
+  min-height: 3.4em;
 }
 
 .imageWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.08 / 1;
+  aspect-ratio: 1.22 / 1;
   overflow: hidden;
   background: #f3eee8;
 }
@@ -174,9 +186,9 @@
   transform: scale(1.05);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .section {
-    padding: 68px 0 76px;
+    padding: 64px 0 72px;
   }
 
   .container {
@@ -186,7 +198,24 @@
   .topRow {
     flex-direction: column;
     align-items: stretch;
+    gap: 16px;
     margin-bottom: 28px;
+  }
+
+  .headingBlock {
+    max-width: 100%;
+  }
+
+  .heading {
+    white-space: normal;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.12;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: 100%;
   }
 
   .actions {
@@ -194,43 +223,95 @@
   }
 
   .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardSummary {
+    font-size: 13px;
+    line-height: 1.65;
   }
 }
 
 @media (max-width: 767px) {
-  .heading {
-    font-size: clamp(22px, 7vw, 30px);
-    line-height: 1.12;
+  .section {
+    padding: 52px 0 64px;
+  }
+
+  .container {
+    width: min(100%, calc(100% - 16px));
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .headingBlock {
     max-width: 100%;
   }
 
+  .heading {
+    margin-bottom: 10px;
+    font-size: clamp(24px, 6.5vw, 30px);
+    line-height: 1.14;
+    max-width: 100%;
+    white-space: normal;
+  }
+
   .description {
-    font-size: 15px;
+    font-size: 13px;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .actions {
+    justify-content: flex-start;
   }
 
   .navButton {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
   }
 
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .dateRow {
+    padding-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   .day {
-    font-size: 26px;
+    font-size: 24px;
+  }
+
+  .dateMeta {
+    font-size: 10px;
   }
 
   .cardTitle {
-    font-size: 16px;
-    min-height: auto;
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.4;
+    min-height: 2.8em;
   }
 
   .cardSummary {
-    font-size: 14px;
-    line-height: 1.7;
-    min-height: auto;
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    min-height: 3.2em;
+  }
+
+  .imageWrap {
+    aspect-ratio: 1 / 1;
   }
 }

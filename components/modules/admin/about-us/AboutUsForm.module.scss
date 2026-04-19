@@ -1,0 +1,157 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  color: var(--admin-text);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  color: var(--admin-text-soft);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.submitButton {
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--admin-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submitButton:hover {
+  background: var(--admin-primary-hover);
+}
+
+.backButton {
+  height: 44px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--admin-text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.form {
+  width: 100%;
+}
+
+.contentLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sideColumn {
+  min-width: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  color: var(--admin-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--admin-text);
+  font-size: 15px;
+  outline: none;
+}
+
+.input {
+  height: 48px;
+  padding: 0 14px;
+}
+
+.textarea {
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+}
+
+.editorWrap {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.editorTextarea {
+  min-height: 420px;
+}
+
+@media (max-width: 991px) {
+  .contentLayout {
+    grid-template-columns: 1fr;
+  }
+}

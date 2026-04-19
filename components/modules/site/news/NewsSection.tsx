@@ -13,17 +13,21 @@ type Props = {
   description?: string;
 };
 
+function getPageSize(width: number) {
+  return width <= 767 ? 2 : 3;
+}
+
 export default function NewsSection({
   items,
   title = "CẬP NHẬT TIN TỨC CÙNG CHÚNG TÔI",
   description = "Theo dõi những thông tin mới nhất về dịch vụ, xu hướng di chuyển và các cập nhật quan trọng dành cho khách hàng.",
 }: Props) {
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(3);
 
   useEffect(() => {
     const handleResize = () => {
-      setPageSize(window.innerWidth <= 767 ? 2 : 4);
+      setPageSize(getPageSize(window.innerWidth));
     };
 
     handleResize();
@@ -89,7 +93,7 @@ export default function NewsSection({
                 onClick={handlePrev}
                 aria-label="Tin trước"
               >
-                <ChevronLeft size={22} strokeWidth={1.8} />
+                <ChevronLeft size={22} strokeWidth={2} />
               </button>
 
               <button
@@ -98,13 +102,17 @@ export default function NewsSection({
                 onClick={handleNext}
                 aria-label="Tin tiếp theo"
               >
-                <ChevronRight size={22} strokeWidth={1.8} />
+                <ChevronRight size={22} strokeWidth={2} />
               </button>
             </div>
           ) : null}
         </div>
 
-        <div className={styles.grid}>
+        <div
+          className={`${styles.grid} ${
+            pageSize === 3 ? styles.desktopGrid : styles.mobileGrid
+          }`}
+        >
           {currentItems.map((item) => (
             <Link
               key={item.id}
@@ -130,7 +138,7 @@ export default function NewsSection({
                   alt={item.imageAlt}
                   fill
                   className={styles.image}
-                  sizes="(max-width: 767px) 50vw, 25vw"
+                  sizes="(max-width: 767px) 50vw, 33vw"
                 />
               </div>
             </Link>
